@@ -27,6 +27,8 @@
       overflow: hidden;
       position: relative; /* 이것도 중요 */
       width: 100%; /* 명확한 너비 지정 */   
+      background-color: white;
+      z-index: 1000;
     }   
 
     .text-slide {
@@ -45,6 +47,8 @@
       grid-template-columns: 1fr auto 1fr;
       background-color: #FDFBF7;
       align-items: center;
+      z-index: 900;
+      position: relative;
     }
 
     /* 상단 5개 메뉴  */
@@ -166,6 +170,11 @@
       transition: 0.5s ease-in-out;
     }
 
+    .prev img{
+      width: 100%;
+      height: 100%;
+    }
+
     .next {
       position: absolute;
       top: 50%;
@@ -179,6 +188,11 @@
       line-height: 32px;
       z-index: 2;
       transition: 0.5s ease-in-out;
+    }
+
+    .next img{
+      width: 100%;
+      height: 100%;
     }
 
     .image:hover .prev {
@@ -604,7 +618,7 @@
       right: 0;
     }
 
-    .overlay.active{
+    .overlay-login.active{
       display: block;
     }
 
@@ -714,7 +728,7 @@
       height: 55px;
     }
 
-    .overlay {
+    .overlay-login {
       /* 전체 화면을 덮는 설정 */
       position: fixed;
       top: 0;
@@ -724,6 +738,69 @@
       background: rgba(0, 0, 0, 0.5); /* 반투명 검은색 */
       /* 처음엔 안 보이게 */
       display: none;
+      z-index: 1000;
+    }
+
+    .shopping-slide{
+      position: fixed;
+      top: 110px;
+      left: -790px;
+      width: 500px;
+      height: 900px;
+      padding: 58px 0 8px 0 0;
+      transition: left 0.3s ease;
+      background-color: #FDFBF7;
+      z-index: 1001;
+    }
+
+    .shopping-slide.active{
+      left: 0;
+    }
+
+    .overlay-shopping.active{
+      display: block;
+    }
+
+    .shopping-slide ul{
+      list-style: none;
+      width: 500px;
+      height: 168px;
+      margin-top: 40px;
+      padding: 0;
+    }
+
+    .shopping-slide ul li{
+      padding: 12px 60px;
+    }
+
+    .shopping-slide ul li a{
+      text-decoration: none;
+      color: black;
+      font-size: 14px;
+    }
+
+    .close-btn2 {
+      position: absolute;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      color: #666;
+      margin-top: 20px;
+    }
+
+    .overlay-shopping {
+      /* 전체 화면을 덮는 설정 */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5); /* 반투명 검은색 */
+      /* 처음엔 안 보이게 */
+      display: none;
+      z-index: 800;
     }
 
   </style>
@@ -828,17 +905,31 @@
     // 로그인 창 나오게 하는 함수
     function loginPopUp(){
       const loginPopup = document.querySelector(".login-popup");
-      const overlay = document.querySelector(".overlay");
+      const overlay = document.querySelector(".overlay-login");
       loginPopup.classList.add("active"); // 클래스명만, 변수명 통일
       overlay.classList.add("active")
     }
 
     function closeLogin(){
       const loginPopup = document.querySelector(".login-popup");
-      const overlay = document.querySelector(".overlay");
+      const overlay = document.querySelector(".overlay-login");
       loginPopup.classList.remove("active"); // 클래스명만, 변수명 통일
       overlay.classList.remove("active")
     };
+
+    function shoppingPopup(){
+      const shoppingSlide = document.querySelector(".shopping-slide");
+      const overlay = document.querySelector(".overlay-shopping");
+      shoppingSlide.classList.add("active"); // shoppingPopup → shoppingSlide
+      overlay.classList.add("active"); // 오버레이도 추가
+    }
+
+    function closeShopping(){
+      const shoppingSlide = document.querySelector(".shopping-slide");
+      const overlay = document.querySelector(".overlay-shopping");
+      shoppingSlide.classList.remove("active"); // shoppingPopup → shoppingSlide
+      overlay.classList.remove("active"); // 오버레이도 추가
+    }
 
   </script>
 
@@ -846,8 +937,11 @@
 
 <body onload="init()">
 
-  <div class="overlay"></div>
+  <!-- 오버레이 -->
+  <div class="overlay-login"></div>
+  <div class="overlay-shopping"></div>
 
+  <!-- 로그인 슬라이드 -->
   <div class="login-popup">
     <button class="close-btn" onclick="closeLogin()">닫기x</button>
     <div class="login-page">
@@ -880,12 +974,31 @@
       </div>
     </div>
   </div>
+
+  <!-- 쇼핑 슬라이드 -->
+  <div class="shopping-slide">
+    <button class="close-btn2" onclick="closeShopping()">X</button>
+    <div>
+      <ul>
+        <li>
+          <a href="">커피</a>
+        </li>
+        <li>
+          <a href="">컵과 텀블러</a>
+        </li>
+        <li>
+          <a href="">브루잉 도구</a>
+        </li>
+        <li>
+          <a href="">라이프 스타일</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
   <!-- 택스트 슬라이드 -->
   <div class="text-slide-container">
     <div class="text-slide"></div>
-  </div>
-  <!-- <div class="text-slide"> -->
-
   </div>
 
   <!-- 헤더 -->
@@ -893,7 +1006,7 @@
     <!-- 메뉴 -->
     <div>
       <ul class="list-menu">
-        <li>쇼핑</li>
+        <li onclick="shoppingPopup()">쇼핑</li>
         <li>베스트셀러</li>
         <li>NOLA</li>
         <li>카페</li>
@@ -933,8 +1046,12 @@
           <a href="">자세히 보기</a>
         </div>
       </div>
-      <div class="prev" onclick="prevImg()"><<</div>
-      <div class="next" onclick="nextImg()">>></div>
+      <div class="prev" onclick="prevImg()">
+        <img src="./img/previcon.png" alt="">
+      </div>
+      <div class="next" onclick="nextImg()">
+        <img src="./img/nexticon.png" alt="">
+      </div>
       </div>
     </div>
 
