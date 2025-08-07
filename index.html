@@ -10,7 +10,8 @@
     /* 폰트 설정 */
     @import url('//fonts.googleapis.com/earlyaccess/notosanskr.css');
 
-    html, body{
+    html,
+    body {
       overflow-x: hidden;
       max-width: 100vw;
     }
@@ -21,15 +22,25 @@
       background-color: #FDFBF7;
     }
 
+    body.no-scroll {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+    }
+
     /* 상단 부분 */
 
     .text-slide-container {
       overflow: hidden;
-      position: relative; /* 이것도 중요 */
-      width: 100%; /* 명확한 너비 지정 */   
+      position: relative;
+      /* 이것도 중요 */
+      width: 100%;
+      /* 명확한 너비 지정 */
       background-color: white;
       z-index: 1000;
-    }   
+    }
 
     .text-slide {
       text-align: center;
@@ -170,7 +181,7 @@
       transition: 0.5s ease-in-out;
     }
 
-    .prev img{
+    .prev img {
       width: 100%;
       height: 100%;
     }
@@ -190,7 +201,7 @@
       transition: 0.5s ease-in-out;
     }
 
-    .next img{
+    .next img {
       width: 100%;
       height: 100%;
     }
@@ -201,6 +212,34 @@
 
     .image:hover .next {
       right: -1px;
+    }
+
+    .pagination {
+      position: absolute;
+      bottom: 60px;
+      right: 112px;
+      display: flex;
+      gap: 12px;
+      z-index: 3;
+    }
+
+    .page-btn {
+      width: 40px;
+      height: 40px;
+      border: none;
+      background: rgba(255, 255, 255, 0);
+      color: rgb(197, 191, 191);
+      cursor: pointer;
+      font-weight: 200;
+      font-size: 12px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .page-btn.active {
+      color: white;
     }
 
     /* 템플릿 부분 css 시작 */
@@ -530,13 +569,13 @@
       font-size: 12px;
     }
 
-    .footer-newletter div{
+    .footer-newletter div {
       margin-top: 5px;
       font-size: 12px;
       font-weight: 500;
     }
 
-    .footer-newletter input{
+    .footer-newletter input {
       width: 100%;
       height: 27px;
       background-color: #333333;
@@ -547,58 +586,58 @@
       margin-top: 30px;
     }
 
-    .footer-newletter input::placeholder{
+    .footer-newletter input::placeholder {
       color: white;
     }
 
-    .sns{
+    .sns {
       list-style: none;
       display: flex;
       padding: 0;
     }
 
-    .sns img{
+    .sns img {
       width: 30px;
       height: 30px;
       text-align: center;
       padding: 12px 12px 12px 0;
     }
 
-    .footer-info{
+    .footer-info {
       padding: 0 112px;
       margin-top: 40px;
       font-size: 12px;
     }
 
-    .footer-info-item{
+    .footer-info-item {
       margin-bottom: 10px;
     }
 
-    .footer-copyright{
+    .footer-copyright {
       margin: 24px 0 0;
       padding: 0 112px;
       border-top: 0.5px solid white;
       font-size: 12px;
     }
 
-    .copyright-wrap{
+    .copyright-wrap {
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .copyright-wrap ul{
+    .copyright-wrap ul {
       padding: 0;
     }
 
-    .footer-copyright ul{
+    .footer-copyright ul {
       list-style: none;
       display: flex;
       gap: 20px;
     }
-    
+
     /* 로그인 부분 */
-    .login-popup{
+    .login-popup {
       /* fixed로 고정하고 top right 값을 조절해서 화면 밖으로 나가게 함 */
       position: fixed;
       top: 0;
@@ -608,17 +647,18 @@
       padding-top: 104px;
       transition: right 0.3s ease;
       background-color: #FDFBF7;
-      z-index: 1001; /* 오버레이보다 위에 */
+      z-index: 1001;
+      /* 오버레이보다 위에 */
     }
 
     /* 여기 두 개가 중요함
       클래스가 추가 되면서 active 클래스가 추가 되어서 위치가 원래대로 돌아옴
     */
-    .login-popup.active{
+    .login-popup.active {
       right: 0;
     }
 
-    .overlay-login.active{
+    .overlay-login.active {
       display: block;
     }
 
@@ -633,19 +673,19 @@
       color: #666;
     }
 
-    .login-page{
+    .login-page {
       width: 367px;
       height: 577px;
       padding: 0 112px;
     }
 
-    .login-section{
+    .login-section {
       width: 320px;
       height: 537px;
       padding: 0 24px;
     }
 
-    .login{
+    .login {
       width: 100%;
       height: 72px;
       margin-bottom: 24px;
@@ -654,7 +694,7 @@
       text-align: center;
     }
 
-    .forgetPw{
+    .forgetPw {
       text-decoration: none;
       color: black;
       font-size: 14px;
@@ -662,42 +702,42 @@
       border-bottom: 1px solid black;
     }
 
-    .login span{
+    .login span {
       font-size: 14px;
       font-weight: 300;
       margin-top: 12px;
     }
 
-    .login-form{
+    .login-form {
       width: 100%;
       height: 310px;
     }
 
-    .email{
+    .email {
       width: 100%;
       height: 58px;
       margin-bottom: 20px;
     }
 
-    .email input{
+    .email input {
       width: 100%;
       height: 58px;
       border: 0.5px solid rgb(226, 225, 225);
     }
 
-    .password{
+    .password {
       width: 100%;
       height: 58px;
       margin-bottom: 20px;
     }
 
-    .password input{
+    .password input {
       width: 100%;
       height: 58px;
       border: 0.5px solid rgb(226, 225, 225);
     }
 
-    .login-btn{
+    .login-btn {
       width: 100%;
       height: 45px;
       margin-top: 40px;
@@ -707,14 +747,14 @@
       border: 0.5px solid black;
     }
 
-    .join-btn{
+    .join-btn {
       width: 100%;
       height: 45px;
       background-color: #FDFBF7;
       border: 0.5px solid black;
     }
 
-    .snsbutton-wrap{
+    .snsbutton-wrap {
       display: flex;
       justify-content: space-around;
       width: 100%;
@@ -723,7 +763,7 @@
       padding-top: 30px;
     }
 
-    .snsbutton-wrap img{
+    .snsbutton-wrap img {
       width: 55px;
       height: 55px;
     }
@@ -735,13 +775,14 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.5); /* 반투명 검은색 */
+      background: rgba(0, 0, 0, 0.5);
+      /* 반투명 검은색 */
       /* 처음엔 안 보이게 */
       display: none;
       z-index: 1000;
     }
 
-    .shopping-slide{
+    .shopping-slide {
       position: fixed;
       top: 110px;
       left: -790px;
@@ -753,15 +794,15 @@
       z-index: 1001;
     }
 
-    .shopping-slide.active{
+    .shopping-slide.active {
       left: 0;
     }
 
-    .overlay-shopping.active{
+    .overlay-shopping.active {
       display: block;
     }
 
-    .shopping-slide ul{
+    .shopping-slide ul {
       list-style: none;
       width: 500px;
       height: 168px;
@@ -769,11 +810,11 @@
       padding: 0;
     }
 
-    .shopping-slide ul li{
+    .shopping-slide ul li {
       padding: 12px 60px;
     }
 
-    .shopping-slide ul li a{
+    .shopping-slide ul li a {
       text-decoration: none;
       color: black;
       font-size: 14px;
@@ -797,12 +838,12 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.5); /* 반투명 검은색 */
+      background: rgba(0, 0, 0, 0.5);
+      /* 반투명 검은색 */
       /* 처음엔 안 보이게 */
       display: none;
       z-index: 800;
     }
-
   </style>
 
   <script>
@@ -825,7 +866,7 @@
 
       textSlide.animate(
         [
-          { transform: 'translateX(100%)', offset: 0 },  // 아래에서 시작
+          { transform: 'translateX(100%)', offset: 0 },
           { transform: 'translateX(0)', offset: 0.3 },
           { transform: 'translateX(0)', offset: 0.7 },
           { transform: 'translateX(-100%)', offset: 1 }
@@ -869,10 +910,10 @@
       const image = document.querySelector(".image");
       const banner_title = document.querySelector(".banner-title");
       const banner_script = document.querySelector(".banner-script");
-      
+
       // 페이드 아웃
       image.classList.add("fade-out");
-      
+
       setTimeout(() => {
         image.style.backgroundImage = `url(${photoList[index]})`;
         banner_title.textContent = bannerTitle[index];
@@ -881,6 +922,7 @@
         image.style.backgroundSize = "cover";
         // 페이드 인
         image.classList.remove("fade-out");
+        updatePagination();
       }, 350);
     }
 
@@ -902,34 +944,62 @@
       changeImage();
     };
 
+    function goToSlide(slideIndex) {
+      index = slideIndex;
+      changeImage();
+    };
+
+    function updatePagination() {
+      const pageButtons = document.querySelectorAll(".page-btn");
+
+      pageButtons.forEach((btn, i) => {
+        if (i === index) {
+          btn.classList.add("active");
+        } else {
+          btn.classList.remove("active")
+        }
+      })
+    }
+
+    updatePagination();
+
     // 로그인 창 나오게 하는 함수
-    function loginPopUp(){
+    function loginPopUp() {
       const loginPopup = document.querySelector(".login-popup");
       const overlay = document.querySelector(".overlay-login");
+
       loginPopup.classList.add("active"); // 클래스명만, 변수명 통일
       overlay.classList.add("active")
     }
 
-    function closeLogin(){
+    function closeLogin() {
       const loginPopup = document.querySelector(".login-popup");
       const overlay = document.querySelector(".overlay-login");
+
       loginPopup.classList.remove("active"); // 클래스명만, 변수명 통일
       overlay.classList.remove("active")
     };
 
-    function shoppingPopup(){
+    // 쇼핑 창 나오게 하는 함수
+    function shoppingPopup() {
       const shoppingSlide = document.querySelector(".shopping-slide");
       const overlay = document.querySelector(".overlay-shopping");
+
       shoppingSlide.classList.add("active"); // shoppingPopup → shoppingSlide
       overlay.classList.add("active"); // 오버레이도 추가
+      document.body.classList.add("no-scroll");
     }
 
-    function closeShopping(){
+    function closeShopping() {
       const shoppingSlide = document.querySelector(".shopping-slide");
       const overlay = document.querySelector(".overlay-shopping");
+
       shoppingSlide.classList.remove("active"); // shoppingPopup → shoppingSlide
       overlay.classList.remove("active"); // 오버레이도 추가
+      document.body.classList.remove("no-scroll");
     }
+
+
 
   </script>
 
@@ -1052,269 +1122,275 @@
       <div class="next" onclick="nextImg()">
         <img src="./img/nexticon.png" alt="">
       </div>
+
+      <div class="pagination">
+        <button class="page-btn active" onclick="goToSlide(0)">01</button>
+        <button class="page-btn" onclick="goToSlide(1)">02</button>
+        <button class="page-btn" onclick="goToSlide(2)">03</button>
       </div>
     </div>
+  </div>
 
-    <!-- 템플릿 -->
-    <div class="template-wrap">
-      <div class="template-item">
-        <div class="template-body">
-          <strong>화이트 모카 강냉이</strong>
-          <p>커피와 함께하기 좋은 특별한 간식</p>
-        </div>
-        <div>
-          <img src="./img/template1.jpg" alt="">
-        </div>
+  <!-- 템플릿 -->
+  <div class="template-wrap">
+    <div class="template-item">
+      <div class="template-body">
+        <strong>화이트 모카 강냉이</strong>
+        <p>커피와 함께하기 좋은 특별한 간식</p>
       </div>
-      <div class="template-item">
-        <div class="template-body">
-          <strong>워크아웃 보틀</strong>
-          <p>스트랩을 더한 감각적인 디자인</p>
-        </div>
-        <div>
-          <img src="./img/template2.jpg" alt="">
-        </div>
-      </div>
-      <div class="template-item">
-        <div class="template-body">
-          <strong>콜드브루 커피 세트</strong>
-          <p>간편하게 즐기는 스페셜티 커피</p>
-        </div>
-        <div>
-          <img src="./img/template3.jpg" alt="">
-        </div>
+      <div>
+        <img src="./img/template1.jpg" alt="">
       </div>
     </div>
-
-    <!-- 템플릿2 -->
-    <div class="template2-wrap">
-      <div class="template2-body">
-        <div class="template2-img"></div>
-        <div class="template2-text">
-          <div class="template2-title">시그니처 블렌드</div>
-          <p class="template2-script">새로운 디자인과 사이즈로 업데이트된<br> 블루보틀의 대표 블렌드 원두를 만나보세요</p>
-          <div class="template2-button">
-            <a href="">자세히 보기</a>
-          </div>
-        </div>
+    <div class="template-item">
+      <div class="template-body">
+        <strong>워크아웃 보틀</strong>
+        <p>스트랩을 더한 감각적인 디자인</p>
+      </div>
+      <div>
+        <img src="./img/template2.jpg" alt="">
       </div>
     </div>
+    <div class="template-item">
+      <div class="template-body">
+        <strong>콜드브루 커피 세트</strong>
+        <p>간편하게 즐기는 스페셜티 커피</p>
+      </div>
+      <div>
+        <img src="./img/template3.jpg" alt="">
+      </div>
+    </div>
+  </div>
 
-    <!-- 템플릿3 -->
-    <div class="template3-wrap">
-      <div class="template3-body">
-        <div class="template3-img">
-          <img src="./img/template3img1.jpg" alt="">
-        </div>
-        <div class="template3-text">
-          <h2>
-            <span>
-              온라인 스토어 단독 <br>
-              푸어 오버 키트를 만나보세요
-            </span>
-          </h2>
-          <div class="text-grid">
-            <div class="grid-item">
-              <h2>커피 드리퍼</h2>
-              <div>
-                <p>최상의 푸어 오버를 위해 탄생한 정교한 디자인과 기능</p>
-              </div>
-            </div>
-
-            <div class="grid-item">
-              <h2>커피 카라페</h2>
-              <div>
-                <p>드리퍼와 함께 편리하게 사용할 수 있는 디자인과 사이즈</p>
-              </div>
-            </div>
-
-            <div class="grid-item">
-              <h2>커피 필터</h2>
-              <div>
-                <p>블루보틀의 노하우를 담은 독창적 디자인의 필터</p>
-              </div>
-            </div>
-
-            <div class="template3-button">
-              <a href="">푸어 오버 키트 보기</a>
-            </div>
-          </div>
+  <!-- 템플릿2 -->
+  <div class="template2-wrap">
+    <div class="template2-body">
+      <div class="template2-img"></div>
+      <div class="template2-text">
+        <div class="template2-title">시그니처 블렌드</div>
+        <p class="template2-script">새로운 디자인과 사이즈로 업데이트된<br> 블루보틀의 대표 블렌드 원두를 만나보세요</p>
+        <div class="template2-button">
+          <a href="">자세히 보기</a>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- 템플릿4 -->
-    <div class="template4-wrap">
-      <div class="template4-body">
-        <div class="template4-text">
-          <h2>
-            <span>
-              다채로운 라이프스타일 <br>
-              아이템을 소개합니다
-            </span>
-          </h2>
-          <div class="text-grid">
-            <div class="grid-item">
-              <h2>런치백</h2>
-              <div>
-                <p>아폴리스와의 협업으로 탄생한 토트백</p>
-              </div>
-            </div>
-
-            <div class="grid-item">
-              <h2>키 체인</h2>
-              <div>
-                <p>커피 트럭을 모티브로 선보이는 악세사리</p>
-              </div>
-            </div>
-
-            <div class="grid-item">
-              <h2>엠브로이더리 에코백</h2>
-              <div>
-                <p>블앤체인과 블루보틀 커피가 협업한 에코백</p>
-              </div>
-            </div>
-
-            <div class="template4-button">
-              <a href="">라이프 스타일 보기</a>
-            </div>
-          </div>
-        </div>
-        <div class="template4-img">
-          <img src="./img/template3img2.jpg" alt="">
-        </div>
+  <!-- 템플릿3 -->
+  <div class="template3-wrap">
+    <div class="template3-body">
+      <div class="template3-img">
+        <img src="./img/template3img1.jpg" alt="">
       </div>
-    </div>
-
-    <!-- 템플릿5 -->
-    <div class="template5-wrap">
-      <div class="template5-body">
-        <img src="./img/template5img1.jpg" alt="">
-        <div>
-          블루보틀 서울역 놀라 팝업 카페
-        </div>
-      </div>
-
-      <div class="template5-text">
-        <h2>가까운 블루보틀 카페를 확인해보세요</h2>
-        <div class="button-wrap">
-          <div class="template5-button">
-            <a href="">카페 찾기</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 풋터 -->
-    <footer>
-      <div class="footer-wrap">
-        <div class="footer-body">
-          <div class="footer-title"></div>
-          <div class="footer-items">
-            <div class="footer-item">
-              <h2>블루보틀 커피</h2>
-              <ul>
-                <li>카페 찾기</li>
-                <li>커리어</li>
-              </ul>
-            </div>
-            <div class="footer-item">
-              <h2>알아보기</h2>
-              <ul>
-                <li>브랜드 소개</li>
-                <li>블루보틀 커피</li>
-                <li>지속가능성</li>
-                <li>브루잉 가이드</li>
-                <li>블로그</li>
-              </ul>
-            </div>
-            <div class="footer-item">
-              <h2>문의</h2>
-              <ul>
-                <li>고객 문의</li>
-                <li>단체/기업 구매 문의</li>
-                <li>자주 묻는 질문</li>
-              </ul>
-            </div>
-          </div>
-
-          <div>
-            <div class="footer-newletter">
-              <h2>구독하고 최신 정보를 받아보세요</h2>
-              <h2>
-                <p>이메일 뉴스레터에 가입하여 독점 혜택, 블루보틀 뉴스, 이벤트, 그리고 기분 좋은 신제품 소식을 누구보다 먼저 알아보세요.</p>
-              </h2>
-              <div>
-                <input type="text" placeholder="이메일 주소를 입력해주세요.">
-              </div>
-              <div>
-                개인정보 처리 방침 및 이용 약관
-              </div>
-              <ul class="sns">
-                <li>
-                  <img src="./img/facebook.png" alt="">
-                </li>
-                <li>
-                  <img src="./img/x.png" alt="">
-                </li>
-                <li>
-                  <img src="./img/instagram.png" alt="">
-                </li>
-                <li>
-                  <img src="./img/youtube.png" alt="">
-                </li>
-                <li>
-                  <img src="./img/kakao.png" alt="">
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="footer-info">
-          <div>
+      <div class="template3-text">
+        <h2>
+          <span>
+            온라인 스토어 단독 <br>
+            푸어 오버 키트를 만나보세요
+          </span>
+        </h2>
+        <div class="text-grid">
+          <div class="grid-item">
+            <h2>커피 드리퍼</h2>
             <div>
-              <div class="footer-info-item">
-                <span>상호: 블루보틀커피코리아 유한회사</span>
-                I
-                <span>대표자: KARL WILLIAM STROVINK</span>
-                I
-                <span>개인정보관리책임자: 임홍주</span>
-              </div>
-              <div class="footer-info-item">
-                <span>사업자등록번화: 155-81-01195</span>
-                I
-                <span>사업정보확인</span>
-                I
-                <span>통신판매업신고: 2023-서울성동-0715</span>
-                I
-                <span>대표번호: 1533-6906</span>
-              </div>
-              <div class="footer-info-item">
-                <span>이메일: support_kr@blubottlecoffee.com</span>
-                I
-                <span>주소: 서울특별시 성동구 아차산로 7(성수동1가)</span>
-                I
-                <span>호스팅서비스 제공자: Shopify, Inc</span>
-              </div>
+              <p>최상의 푸어 오버를 위해 탄생한 정교한 디자인과 기능</p>
             </div>
+          </div>
+
+          <div class="grid-item">
+            <h2>커피 카라페</h2>
+            <div>
+              <p>드리퍼와 함께 편리하게 사용할 수 있는 디자인과 사이즈</p>
+            </div>
+          </div>
+
+          <div class="grid-item">
+            <h2>커피 필터</h2>
+            <div>
+              <p>블루보틀의 노하우를 담은 독창적 디자인의 필터</p>
+            </div>
+          </div>
+
+          <div class="template3-button">
+            <a href="">푸어 오버 키트 보기</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 템플릿4 -->
+  <div class="template4-wrap">
+    <div class="template4-body">
+      <div class="template4-text">
+        <h2>
+          <span>
+            다채로운 라이프스타일 <br>
+            아이템을 소개합니다
+          </span>
+        </h2>
+        <div class="text-grid">
+          <div class="grid-item">
+            <h2>런치백</h2>
+            <div>
+              <p>아폴리스와의 협업으로 탄생한 토트백</p>
+            </div>
+          </div>
+
+          <div class="grid-item">
+            <h2>키 체인</h2>
+            <div>
+              <p>커피 트럭을 모티브로 선보이는 악세사리</p>
+            </div>
+          </div>
+
+          <div class="grid-item">
+            <h2>엠브로이더리 에코백</h2>
+            <div>
+              <p>블앤체인과 블루보틀 커피가 협업한 에코백</p>
+            </div>
+          </div>
+
+          <div class="template4-button">
+            <a href="">라이프 스타일 보기</a>
+          </div>
+        </div>
+      </div>
+      <div class="template4-img">
+        <img src="./img/template3img2.jpg" alt="">
+      </div>
+    </div>
+  </div>
+
+  <!-- 템플릿5 -->
+  <div class="template5-wrap">
+    <div class="template5-body">
+      <img src="./img/template5img1.jpg" alt="">
+      <div>
+        블루보틀 서울역 놀라 팝업 카페
+      </div>
+    </div>
+
+    <div class="template5-text">
+      <h2>가까운 블루보틀 카페를 확인해보세요</h2>
+      <div class="button-wrap">
+        <div class="template5-button">
+          <a href="">카페 찾기</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 풋터 -->
+  <footer>
+    <div class="footer-wrap">
+      <div class="footer-body">
+        <div class="footer-title"></div>
+        <div class="footer-items">
+          <div class="footer-item">
+            <h2>블루보틀 커피</h2>
+            <ul>
+              <li>카페 찾기</li>
+              <li>커리어</li>
+            </ul>
+          </div>
+          <div class="footer-item">
+            <h2>알아보기</h2>
+            <ul>
+              <li>브랜드 소개</li>
+              <li>블루보틀 커피</li>
+              <li>지속가능성</li>
+              <li>브루잉 가이드</li>
+              <li>블로그</li>
+            </ul>
+          </div>
+          <div class="footer-item">
+            <h2>문의</h2>
+            <ul>
+              <li>고객 문의</li>
+              <li>단체/기업 구매 문의</li>
+              <li>자주 묻는 질문</li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-newletter">
+            <h2>구독하고 최신 정보를 받아보세요</h2>
+            <h2>
+              <p>이메일 뉴스레터에 가입하여 독점 혜택, 블루보틀 뉴스, 이벤트, 그리고 기분 좋은 신제품 소식을 누구보다 먼저 알아보세요.</p>
+            </h2>
+            <div>
+              <input type="text" placeholder="이메일 주소를 입력해주세요.">
+            </div>
+            <div>
+              개인정보 처리 방침 및 이용 약관
+            </div>
+            <ul class="sns">
+              <li>
+                <img src="./img/facebook.png" alt="">
+              </li>
+              <li>
+                <img src="./img/x.png" alt="">
+              </li>
+              <li>
+                <img src="./img/instagram.png" alt="">
+              </li>
+              <li>
+                <img src="./img/youtube.png" alt="">
+              </li>
+              <li>
+                <img src="./img/kakao.png" alt="">
+              </li>
+            </ul>
           </div>
         </div>
       </div>
 
-      <div class="footer-copyright">
-        <div class="copyright-wrap">
-          <ul>
-            <li>개인정보 처리방침</li>
-            <li>판매이용약관</li>
-            <li>환불정책</li>
-          </ul>
+      <div class="footer-info">
+        <div>
           <div>
-            © 2023 BLUE BOTTLE COFFEE INC., ALL RIGHTS RESERVED
+            <div class="footer-info-item">
+              <span>상호: 블루보틀커피코리아 유한회사</span>
+              I
+              <span>대표자: KARL WILLIAM STROVINK</span>
+              I
+              <span>개인정보관리책임자: 임홍주</span>
+            </div>
+            <div class="footer-info-item">
+              <span>사업자등록번화: 155-81-01195</span>
+              I
+              <span>사업정보확인</span>
+              I
+              <span>통신판매업신고: 2023-서울성동-0715</span>
+              I
+              <span>대표번호: 1533-6906</span>
+            </div>
+            <div class="footer-info-item">
+              <span>이메일: support_kr@blubottlecoffee.com</span>
+              I
+              <span>주소: 서울특별시 성동구 아차산로 7(성수동1가)</span>
+              I
+              <span>호스팅서비스 제공자: Shopify, Inc</span>
+            </div>
           </div>
         </div>
       </div>
-    </footer>
+    </div>
+
+    <div class="footer-copyright">
+      <div class="copyright-wrap">
+        <ul>
+          <li>개인정보 처리방침</li>
+          <li>판매이용약관</li>
+          <li>환불정책</li>
+        </ul>
+        <div>
+          © 2023 BLUE BOTTLE COFFEE INC., ALL RIGHTS RESERVED
+        </div>
+      </div>
+    </div>
+  </footer>
 
 </body>
 
