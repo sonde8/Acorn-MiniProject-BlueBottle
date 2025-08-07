@@ -583,6 +583,149 @@
       gap: 20px;
     }
     
+    /* 로그인 부분 */
+    .login-popup{
+      /* fixed로 고정하고 top right 값을 조절해서 화면 밖으로 나가게 함 */
+      position: fixed;
+      top: 0;
+      right: -1800px;
+      width: 620px;
+      height: 864px;
+      padding-top: 104px;
+      transition: right 0.3s ease;
+      background-color: #FDFBF7;
+      z-index: 1001; /* 오버레이보다 위에 */
+    }
+
+    /* 여기 두 개가 중요함
+      클래스가 추가 되면서 active 클래스가 추가 되어서 위치가 원래대로 돌아옴
+    */
+    .login-popup.active{
+      right: 0;
+    }
+
+    .overlay.active{
+      display: block;
+    }
+
+    .close-btn {
+      position: absolute;
+      right: 50px;
+      top: 40px;
+      background: none;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      color: #666;
+    }
+
+    .login-page{
+      width: 367px;
+      height: 577px;
+      padding: 0 112px;
+    }
+
+    .login-section{
+      width: 320px;
+      height: 537px;
+      padding: 0 24px;
+    }
+
+    .login{
+      width: 100%;
+      height: 72px;
+      margin-bottom: 24px;
+      font-size: 24px;
+      font-weight: 400;
+      text-align: center;
+    }
+
+    .forgetPw{
+      text-decoration: none;
+      color: black;
+      font-size: 14px;
+      width: 145px;
+      border-bottom: 1px solid black;
+    }
+
+    .login span{
+      font-size: 14px;
+      font-weight: 300;
+      margin-top: 12px;
+    }
+
+    .login-form{
+      width: 100%;
+      height: 310px;
+    }
+
+    .email{
+      width: 100%;
+      height: 58px;
+      margin-bottom: 20px;
+    }
+
+    .email input{
+      width: 100%;
+      height: 58px;
+      border: 0.5px solid rgb(226, 225, 225);
+    }
+
+    .password{
+      width: 100%;
+      height: 58px;
+      margin-bottom: 20px;
+    }
+
+    .password input{
+      width: 100%;
+      height: 58px;
+      border: 0.5px solid rgb(226, 225, 225);
+    }
+
+    .login-btn{
+      width: 100%;
+      height: 45px;
+      margin-top: 40px;
+      margin-bottom: 12px;
+      background-color: #545454;
+      color: white;
+      border: 0.5px solid black;
+    }
+
+    .join-btn{
+      width: 100%;
+      height: 45px;
+      background-color: #FDFBF7;
+      border: 0.5px solid black;
+    }
+
+    .snsbutton-wrap{
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      border-top: 1px solid rgb(226, 225, 225);
+      margin: 40px 0;
+      padding-top: 30px;
+    }
+
+    .snsbutton-wrap img{
+      width: 55px;
+      height: 55px;
+    }
+
+    .overlay {
+      /* 전체 화면을 덮는 설정 */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5); /* 반투명 검은색 */
+      /* 처음엔 안 보이게 */
+      display: none;
+    }
+
   </style>
 
   <script>
@@ -664,7 +807,6 @@
       }, 350);
     }
 
-
     function nextImg() {
       index++;
 
@@ -683,13 +825,61 @@
       changeImage();
     };
 
+    // 로그인 창 나오게 하는 함수
+    function loginPopUp(){
+      const loginPopup = document.querySelector(".login-popup");
+      const overlay = document.querySelector(".overlay");
+      loginPopup.classList.add("active"); // 클래스명만, 변수명 통일
+      overlay.classList.add("active")
+    }
 
+    function closeLogin(){
+      const loginPopup = document.querySelector(".login-popup");
+      const overlay = document.querySelector(".overlay");
+      loginPopup.classList.remove("active"); // 클래스명만, 변수명 통일
+      overlay.classList.remove("active")
+    };
 
   </script>
 
 </head>
 
 <body onload="init()">
+
+  <div class="overlay"></div>
+
+  <div class="login-popup">
+    <button class="close-btn" onclick="closeLogin()">닫기x</button>
+    <div class="login-page">
+      <div class="login-section">
+        <h1 class="login">
+          로그인 <br>
+          <span>블루보틀 온라인 스토어의 다양한 혜택을 만나보세요</span>
+        </h1>
+        <div class="login-forn">
+          <form action="">
+            <div class="email">
+              <input type="text" placeholder="이메일 주소 *">
+            </div>
+            <div class="password">
+              <input type="password" placeholder="비밀번호 *">
+            </div>
+            <a href="" class="forgetPw">비밀번호를 잊으셨나요?</a>
+            <button class="login-btn">로그인</button>
+            <button class="join-btn">회원 가입</button>
+          </form>
+        </div>
+        <div class="snsbutton-wrap">
+          <a href="">
+            <img src="./img/naver.png" alt="" class="sns-btn">
+          </a>
+          <a href="">
+            <img src="./img/kakaotalk.png" alt="" class="sns-btn">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- 택스트 슬라이드 -->
   <div class="text-slide-container">
     <div class="text-slide"></div>
@@ -722,7 +912,7 @@
         <img src="./img/search1.png" alt="">
       </span>
       <span>
-        <img src="./img/user1.png" alt="">
+        <img src="./img/user1.png" alt="" onclick="loginPopUp()">
       </span>
       <span>
         <img src="./img/basket1.png" alt="">
@@ -1008,6 +1198,7 @@
         </div>
       </div>
     </footer>
+
 </body>
 
 </html>
