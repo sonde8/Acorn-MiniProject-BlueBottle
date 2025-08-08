@@ -77,6 +77,7 @@ function changeImage() {
   }, 350);
 }
 
+// 이미지 슬라이드 다음 버튼
 function nextImg() {
   index++;
 
@@ -86,6 +87,7 @@ function nextImg() {
   changeImage();
 };
 
+// 이미지 슬라이드 이전 버튼
 function prevImg() {
   index--;
 
@@ -95,6 +97,7 @@ function prevImg() {
   changeImage();
 };
 
+// 페이지 네이션 관련 함수
 function goToSlide(slideIndex) {
   index = slideIndex;
   changeImage();
@@ -123,6 +126,7 @@ function loginPopUp() {
   overlay.classList.add("active")
 }
 
+// 로그인 창 들어가게 하는 함수
 function closeLogin() {
   const loginPopup = document.querySelector(".login-popup");
   const overlay = document.querySelector(".overlay-login");
@@ -141,11 +145,83 @@ function shoppingPopup() {
   document.body.classList.add("no-scroll");
 }
 
+// 쇼핑 창 들어가게 하는 함수
 function closeShopping() {
   const shoppingSlide = document.querySelector(".shopping-slide");
   const overlay = document.querySelector(".overlay-shopping");
+  const detailSlide  = document.querySelector(".detail-slide");
 
   shoppingSlide.classList.remove("active"); // shoppingPopup → shoppingSlide
   overlay.classList.remove("active"); // 오버레이도 추가
+  detailSlide.classList.remove("active");
   document.body.classList.remove("no-scroll");
+}
+
+// 쇼핑 세부 카테고리 
+const categoryData = {
+  coffee: {
+      title: '커피',
+      items: [
+          { name: '모든 커피', link: '/블루보틀커피_ALL커피모음.html' },
+          { name: '블렌드', link: '/블루보틀커피_블렌드.html' },
+          { name: '싱글 오리진', link: '/블루보틀커피_싱글오리진.html' },
+          { name: '인스턴트', link: '/블루보틀커피_인스턴트.html' },
+          { name: '콜드브루', link: '/블루보틀커피_콜드브루.html' },
+          { name: '휴먼 메이드', link: '/블루보틀커피_휴먼메이드.html' },
+          { name: '세트', link: '/블루보틀커피_세트.html' }
+      ]
+  },
+  tumbler: {
+      title: '컵과 텀블러',
+      items: [
+          { name: '모든 컵과 텀블러', link: '/블루보틀_ALL컵모음.html' },
+          { name: '텀블러', link: '/블루보틀_텀블러.html' },
+          { name: '컵과 머그', link: '/블루보틀_컵과머그.html' },
+          { name: '유리잔', link: '/블루보틀_유리잔.html' }
+      ]
+  },
+  brewing: {
+      title: '브루잉 도구',
+      items: [
+          { name: '모든 브루잉 도구', link: '/블루보틀브루밍도구_ALL도구모음.html' },
+          { name: '브루잉 도구', link: '/블루보틀브루밍도구_브루잉도구.html' },
+          { name: '액세서리', link: '/블루보틀루밍도구_브루잉액세서리.html' },
+          { name: '필터', link: '/블루보틀브루밍도구_커피핕터.html' },
+          { name: '그라인더', link: '/블루보틀브루밍도구_그라인더.html' }
+      ]
+  }
+};
+
+// 세부 카테고리 열기
+function openDetailCategory(category) {
+  const detailSlide = document.querySelector(".detail-slide");
+  const detailTitle = document.getElementById("detail-title");
+  const detailList = document.getElementById("detail-list");
+  
+  // 카테고리 데이터 가져오기
+  const data = categoryData[category];
+  
+  // 제목 설정
+  detailTitle.textContent = data.title;
+  
+  // 리스트 항목 생성
+  detailList.innerHTML = '';
+  data.items.forEach(item => {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.textContent = item.name;
+      a.href = item.link; // 실제 링크 설정
+      
+      li.appendChild(a);
+      detailList.appendChild(li);
+  });
+  
+  // 세부 슬라이드 열기
+  detailSlide.classList.add("active");
+}
+
+// 세부 카테고리 닫기 (뒤로가기)
+function closeDetailSlide() {
+  const detailSlide = document.querySelector(".detail-slide");
+  detailSlide.classList.remove("active");
 }

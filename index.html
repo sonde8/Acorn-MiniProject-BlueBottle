@@ -57,20 +57,32 @@
     <div>
       <ul>
         <li>
-          <a href="">커피</a>
+            <a href="#" onclick="openDetailCategory('coffee'); return false;">커피</a>
         </li>
         <li>
-          <a href="">컵과 텀블러</a>
+            <a href="#" onclick="openDetailCategory('tumbler'); return false;">컵과 텀블러</a>
         </li>
         <li>
-          <a href="">브루잉 도구</a>
+            <a href="#" onclick="openDetailCategory('brewing'); return false;">브루잉 도구</a>
         </li>
         <li>
-          <a href="">라이프 스타일</a>
+            <a href="/블루보틀_라이프스타일.html" onclick="openDetailCategory('lifestyle'); return false;">라이프 스타일</a>
         </li>
-      </ul>
+    </ul>
     </div>
   </div>
+
+  <!-- 쇼핑 세부 카테고리 슬라이드 -->
+  <div class="detail-slide">
+    <button class="back-btn" onclick="closeDetailSlide()">←</button>
+    <button class="close-btn3" onclick="closeShopping()">X</button>
+    <h3 id="detail-title">카테고리</h3>
+    <div>
+        <ul id="detail-list">
+            <!-- 동적으로 생성될 세부 항목들 -->
+        </ul>
+    </div>
+</div>
 
   <!-- 택스트 슬라이드 -->
   <div class="text-slide-container">
@@ -92,7 +104,9 @@
 
     <!-- 로고 -->
     <div>
-      <img src="./img/logo.png" alt="" class="logo">
+      <a href="/index.html">
+        <img src="./img/logo.png" alt="" class="logo">
+      </a>
     </div>
 
     <!-- 검색,회원,장바구니 -->
@@ -176,7 +190,7 @@
         <div class="template2-title">시그니처 블렌드</div>
         <p class="template2-script">새로운 디자인과 사이즈로 업데이트된<br> 블루보틀의 대표 블렌드 원두를 만나보세요</p>
         <div class="template2-button">
-          <a href="">자세히 보기</a>
+          <a href="/블루보틀커피_블렌드.html">자세히 보기</a>
         </div>
       </div>
     </div>
@@ -258,7 +272,7 @@
           </div>
 
           <div class="template4-button">
-            <a href="">라이프 스타일 보기</a>
+            <a href="/블루보틀_라이프스타일.html">라이프 스타일 보기</a>
           </div>
         </div>
       </div>

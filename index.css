@@ -236,19 +236,18 @@ header {
 /* 템플릿 부분 css 시작 */
 .template-wrap {
   display: flex;
-  /* border: 1px solid black; */
-  /* height: 869px; */
   padding: 128px 0;
 }
 
 .template-item {
+  width: 33%;
   padding: 0 88px;
   border-right: 0.3px solid rgb(226, 225, 225);
 }
 
 .template-item img {
-  width: 464px;
-  height: 464px;
+  width: 100%;
+  height: 100%;
 }
 
 .template-body {
@@ -773,6 +772,7 @@ footer {
   z-index: 1000;
 }
 
+/* 쇼핑 슬라이드 부분 */
 .shopping-slide {
   position: fixed;
   top: 110px;
@@ -834,4 +834,74 @@ footer {
   /* 처음엔 안 보이게 */
   display: none;
   z-index: 800;
+}
+
+/* 쇼핑 슬라이드 세부 카테고리 부분 */
+/* 새로 추가하는 CSS - 세부 카테고리 슬라이드 */
+.detail-slide {
+  position: fixed;
+  top: 110px;
+  left: -500px;
+  width: 500px;
+  height: 900px;
+
+  transition: left 0.3s ease;
+  background-color: #FDFBF7;
+  z-index: 1002;
+  border-left: 1px solid #ddd;
+}
+
+.detail-slide.active {
+  left: 500px;
+}
+
+.detail-slide .back-btn {
+  position: absolute;
+  left: 20px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #666;
+  margin-top: 20px;
+}
+
+.detail-slide .close-btn3 {
+  position: absolute;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #666;
+  margin-top: 20px;
+}
+
+.detail-slide h3 {
+  margin: 60px 0 20px 60px;
+  font-size: 14px;
+  color: #333;
+  font-weight: 400;
+}
+
+.detail-slide ul {
+  list-style: none;
+  width: 500px;
+  margin-top: 20px;
+  padding: 0;
+}
+
+.detail-slide ul li {
+  padding: 12px 60px;
+}
+
+.detail-slide ul li a {
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.detail-slide ul li a:hover {
+  color: #007acc;
 }
