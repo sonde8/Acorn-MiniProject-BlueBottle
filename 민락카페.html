@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    @import url('//fonts.googleapis.com/earlyaccess/notosanskr.css');
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      margin: 0;
+    }
+
+    .text-slide-container {
+      overflow: hidden;
+      position: relative;
+      /* 이것도 중요 */
+      width: 100%;
+      /* 명확한 너비 지정 */
+      background-color: white;
+      z-index: 1000;
+    }
+
+    .text-slide {
+      text-align: center;
+      font-size: 12px;
+      height: 30px;
+      line-height: 30px;
+      max-width: 100%;
+    }
+
+    header {
+      height: 80px;
+      padding: 0 60px;
+      /* grid를 사용해야함 */
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      background-color: #FDFBF7;
+      align-items: center;
+      z-index: 900;
+      position: relative;
+    }
+
+    /* 상단 5개 메뉴  */
+    .list-menu {
+      display: flex;
+      list-style: none;
+      gap: 40px;
+      font-size: 14px;
+      align-items: center;
+      padding: 0;
+    }
+
+    .list-menu li a {
+      text-decoration: none;
+      color: black;
+    }
+
+    /* 상단 3개 아이콘 */
+    .header-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      justify-self: end;
+    }
+
+    .header-icon span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+    }
+
+    .header-icon img {
+      width: 35px;
+      height: 35px;
+    }
+
+    .logo {
+      height: 57px;
+      width: 23px;
+    }
+
+    header css .wrap {
+      border: 1px solid black;
+      background-color: #fcfbf7;
+      color: #4b4b4b;
+    }
+
+    .wap {
+      text-align: center;
+      background-color: #fcfbf7;
+      padding: 70px 0px;
+    }
+
+    .wp {
+      text-align: center;
+      padding: 50px 0px;
+      background-color: #fcfbf7;
+    }
+
+    .wp img {
+      width: 55%;
+    }
+
+    footer {
+      height: 450px;
+      padding: 80px 0 40px;
+      background-color: #333333;
+      color: white;
+    }
+
+    .footer-body {
+      display: flex;
+    }
+
+    .footer-items {
+      display: flex;
+      padding: 0 112px;
+    }
+
+    .footer-item {
+      width: 340px;
+      height: 240px;
+    }
+
+    .footer-item h2 {
+      font-size: 14px;
+    }
+
+    .footer-item ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-item ul li {
+      font-size: 12px;
+      font-weight: 500;
+      margin: 0 15px 16px 0;
+    }
+
+    .footer-newletter h2 {
+      font-size: 14px;
+    }
+
+    .footer-newletter h2 p {
+      font-size: 12px;
+    }
+
+    .footer-newletter div {
+      margin-top: 5px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .footer-newletter input {
+      width: 100%;
+      height: 27px;
+      background-color: #333333;
+      outline: none;
+      border: none;
+      border-bottom: 1px solid white;
+      color: white;
+      margin-top: 30px;
+    }
+
+    .footer-newletter input::placeholder {
+      color: white;
+    }
+
+    .sns {
+      list-style: none;
+      display: flex;
+      padding: 0;
+    }
+
+    .sns img {
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      padding: 12px 12px 12px 0;
+    }
+
+    .footer-info {
+      padding: 0 112px;
+      margin-top: 40px;
+      font-size: 12px;
+    }
+
+    .footer-info-item {
+      margin-bottom: 10px;
+    }
+
+    .footer-copyright {
+      margin: 24px 0 0;
+      padding: 0 112px;
+      border-top: 0.5px solid white;
+      font-size: 12px;
+    }
+
+    .copyright-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .copyright-wrap ul {
+      padding: 0;
+    }
+
+    .footer-copyright ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+  </style>
+</head>
+
+<body onload="init()">
+  <script src="./index.js"></script>
+
+  <div class="text-slide-container">
+    <div class="text-slide"></div>
+  </div>
+
+  <!-- 헤더 -->
+  <header>
+    <!-- 메뉴 -->
+    <div>
+      <ul class="list-menu">
+        <li onclick="shoppingPopup()">쇼핑</li>
+        <li>
+          <a href="./베스트셀러.html">베스트셀러</a>
+        </li>
+        <li>
+          <a href="./놀라.html">NOLA</a>
+        </li>
+        <li>
+          <a href="./카페.html">카페</a>
+        </li>
+        <li>
+          <a href="./블로그.html">블로그</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 로고 -->
+    <div>
+      <a href="/index.html">
+        <img src="./img/logo.png" alt="" class="logo">
+      </a>
+    </div>
+
+    <!-- 검색,회원,장바구니 -->
+    <div class="header-icon">
+      <span>
+        <img src="./img/search1.png" alt="">
+      </span>
+      <span>
+        <img src="./img/user1.png" alt="" onclick="loginPopUp()">
+      </span>
+      <span>
+        <img src="./img/basket1.png" alt="">
+      </span>
+    </div>
+  </header>
+
+  <!--header 제외한 전체 영역-->
+  <div class="wrap">
+
+    <!--header 밑 글씨 영역-->
+    <div class="wap">
+
+      <h2 style="margin: 0 auto;"> 블루보틀 부산 민락 카페 오픈 </h2>
+      <h4> 산과 바다, 강이 만나는 교차점에서 다채로운 풍경 </h4>
+      <h6 style="margin: 0 auto;"> 블루보틀 커피 코리아</h6>
+
+    </div>
+
+    <!--첫번쩨 사진-->
+    <div class="wp">
+
+      <img
+        src="https://kr.bluebottlecoffee.com/cdn/shop/files/web_cafe_BM_PC_2220x1232_101824_1.jpg?v=1731629169&width=2520"
+        alt="이미지">
+
+    </div>
+
+    <!--두번쩨 사진-->
+    <div class="wp">
+
+      <img
+        src="https://kr.bluebottlecoffee.com/cdn/shop/files/web_cafe_BM_PC_2220x1232_101824_3.jpg?v=1731630166&width=2520"
+        alt="이미지">
+
+    </div>
+
+    <!--두번쩨 사진 밑 글-->
+    <div class="wp">
+
+      <p> 2024년 11월 15일 블루보틀 부산 민락 카페가 오픈합니다 </p> <br>
+
+      <p> 부산 민락수변로에 위치한 ‘블루보틀 부산 민락 카페’는 국내 최대 항구 도시로 지속적인 무역과 <br>
+        다양한 문화의 유입으로 새로운 산물을 만들어내는 부산의 특성을 블루보틀만의 방식으로 오롯이 <br>
+        재현한 공간입니다.
+      </p> <br>
+
+      <p> 카페는 총 2개 층 규모로 4층과 옥상에 자리했습니다. 4층에 자리한 바 스테이션은 부드러운 온기가 <br>
+        느껴지는 목재로 완성했으며, 창가 자리는 미니멀한 무드의 콘크리트를 사용해 브랜드 아이덴티티를 <br>
+        강조했습니다. 블루보틀 최초로 마련된 루프탑 공간은 붉은 테라코타를 활용해 카페 뒤 보이는 푸른 <br>
+        나무와 대비를 이루며 감각적인 여운을 더했습니다.
+      </p>
+
+    </div>
+
+    <!--세번쩨 사진-->
+    <div class="wp">
+
+      <img
+        src="https://kr.bluebottlecoffee.com/cdn/shop/files/web_cafe_BM_PC_2220x1232_101824_2_50452a22-5e56-4fdd-bc67-74a89e648166.jpg?v=1731630114&width=2520"
+        alt="이미지">
+
+    </div>
+
+    <!--네번쩨 사진-->
+    <div class="wp">
+
+      <img
+        src="https://kr.bluebottlecoffee.com/cdn/shop/files/web_cafe_BM_PC_2220x1232_111524_4_26487b86-4aad-4e32-bdbd-95a69fe01652.jpg?v=1731630186&width=2520"
+        alt="이미지">
+
+    </div>
+
+    <!--네번쩨 사진 밑 글-->
+    <div class="wp">
+
+      <p> 다양성이 공존하는 부산의 특징을 담은 단독 메뉴도 만나볼 수 있습니다. 안락한 분위기에서 <br>
+        바리스타가 정성스레 내린 커피를 즐기던 일본의 킷사텐 문화에서 영감을 받아 탄생한 ‘도쿄 킷사 <br>
+        블렌드’를 한정 기간 동안 부산 민락 카페에서 선보입니다. 묵직한 바디감과 스모키한 풍미를 지닌 <br>
+        블렌드를 넬 드립으로 추출한 커피와 ‘트러플 쇼콜라 나츄르’ 초콜릿과 함께 페어링 메뉴로 <br>
+        제공됩니다.
+      </p> <br>
+
+      <p> 부산 영도가 우리나라 최초의 고구마 재배지인 것에 착안해 탄생한 ‘자색 고구마 바스크 치즈 <br>
+        케이크’ 역시 단독 메뉴로 만나볼 수 있습니다. 부드러운 자색 고구마와 치즈의 텍스처가 어우러져 <br>
+        푸어오버 커피와 함께 즐겼을 때 감미로운 맛을 경험할 수 있습니다.
+      </p> <br>
+
+      <p> 다양한 MD 상품과 더불어 부산 카페 한정으로 특별히 자수가 놓여진 ‘티타올(Tea Towel)’도 <br>
+        만나볼 수 있습니다. 또한, 11월에는 5만원 이상 구매 시 블루보틀 로고 파우치를 증정하는 오픈 <br>
+        기념 프로모션도 진행됩니다.
+      </p> <br>
+
+      <p> 백산, 수영강, 수영만을 모두 품은 '블루보틀 부산 민락 카페'에서 독특한 풍경과 함께 부산의 활기와 <br>
+        문화적 융합을 한 잔의 커피와 함께 하시기 바랍니다.
+      </p>
+
+
+    </div>
+
+    <footer>
+      <div class="footer-wrap">
+        <div class="footer-body">
+          <div class="footer-title"></div>
+          <div class="footer-items">
+            <div class="footer-item">
+              <h2>블루보틀 커피</h2>
+              <ul>
+                <li>카페 찾기</li>
+                <li>커리어</li>
+              </ul>
+            </div>
+            <div class="footer-item">
+              <h2>알아보기</h2>
+              <ul>
+                <li>브랜드 소개</li>
+                <li>블루보틀 커피</li>
+                <li>지속가능성</li>
+                <li>브루잉 가이드</li>
+                <li>블로그</li>
+              </ul>
+            </div>
+            <div class="footer-item">
+              <h2>문의</h2>
+              <ul>
+                <li>고객 문의</li>
+                <li>단체/기업 구매 문의</li>
+                <li>자주 묻는 질문</li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <div class="footer-newletter">
+              <h2>구독하고 최신 정보를 받아보세요</h2>
+              <h2>
+                <p>이메일 뉴스레터에 가입하여 독점 혜택, 블루보틀 뉴스, 이벤트, 그리고 기분 좋은 신제품 소식을 누구보다 먼저 알아보세요.</p>
+              </h2>
+              <div>
+                <input type="text" placeholder="이메일 주소를 입력해주세요.">
+              </div>
+              <div>
+                개인정보 처리 방침 및 이용 약관
+              </div>
+              <ul class="sns">
+                <li>
+                  <img src="./img/facebook.png" alt="">
+                </li>
+                <li>
+                  <img src="./img/x.png" alt="">
+                </li>
+                <li>
+                  <img src="./img/instagram.png" alt="">
+                </li>
+                <li>
+                  <img src="./img/youtube.png" alt="">
+                </li>
+                <li>
+                  <img src="./img/kakao.png" alt="">
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-info">
+          <div>
+            <div>
+              <div class="footer-info-item">
+                <span>상호: 블루보틀커피코리아 유한회사</span>
+                I
+                <span>대표자: KARL WILLIAM STROVINK</span>
+                I
+                <span>개인정보관리책임자: 임홍주</span>
+              </div>
+              <div class="footer-info-item">
+                <span>사업자등록번화: 155-81-01195</span>
+                I
+                <span>사업정보확인</span>
+                I
+                <span>통신판매업신고: 2023-서울성동-0715</span>
+                I
+                <span>대표번호: 1533-6906</span>
+              </div>
+              <div class="footer-info-item">
+                <span>이메일: support_kr@blubottlecoffee.com</span>
+                I
+                <span>주소: 서울특별시 성동구 아차산로 7(성수동1가)</span>
+                I
+                <span>호스팅서비스 제공자: Shopify, Inc</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-copyright">
+        <div class="copyright-wrap">
+          <ul>
+            <li>개인정보 처리방침</li>
+            <li>판매이용약관</li>
+            <li>환불정책</li>
+          </ul>
+          <div>
+            © 2023 BLUE BOTTLE COFFEE INC., ALL RIGHTS RESERVED
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+</body>
+
+</html>

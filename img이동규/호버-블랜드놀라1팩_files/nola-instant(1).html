@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!-- saved from url=(0144)https://kr.bluebottlecoffee.com/web-pixels@73b305c4w82c1918fpb7086179m603a4010/custom/web-pixel-38568189@25/sandbox/modern/products/nola-instant -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>크래프트 인스턴트 커피 블랜드 놀라 1팩 – BLUE BOTTLE COFFEE KOREA</title>
+    <script id="naver-trans-js" src="./wcslog.js.다운로드"></script><script src="./s73b305c4w82c1918fpb7086179m603a4010m.js.다운로드"></script>
+
+    <script type="text/javascript">
+  (function(shopify) {shopify.extend('WebPixel::Render', function(api) {
+var analytics=api.analytics,browser=api.browser,init=api.init;
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//wcs.naver.net/wcslog.js";
+  fjs.parentNode.insertBefore(js, fjs);
+})(document, 'script', 'naver-trans-js');
+
+const naverId = 's_15fc063a69f0';
+const domain = 'kr.bluebottlecoffee.com';
+const delay = (f, d = 1500) => setTimeout(f, d);
+analytics.subscribe("page_viewed", async (event) => {
+  delay(() => {
+    if (window.wcs) {
+      var wcs_add;
+      if(!wcs_add) {
+        wcs_add = {};
+        wcs_add.wa = naverId;
+        window.wcs_add = wcs_add; 
+      }
+      wcs.inflow(domain);
+      wcs_do();
+      console.info('pageView', 'naver')
+    }
+  });
+});
+analytics.subscribe("product_viewed", async (event) => {
+  console.info('start view_item');
+  const productSku = event.data.productVariant.sku;
+  delay(() => {
+    if (window.wcs) {
+      const _conv = {};
+      _conv.type = "view_product";
+      _conv.items = [
+        {
+          id: productSku
+        }
+      ];
+      wcs.trans(_conv);
+      console.log(_conv, 'view_product')
+    }
+  });
+});
+analytics.subscribe("product_added_to_cart", async (event) => {
+  const cartLine = event.data.cartLine;
+  const merchandiseVariantSku = cartLine.merchandise.sku;
+  delay(() => {
+    if (window.wcs) {
+      const _conv = {};
+      _conv.type = "add_to_cart";
+      _conv.items = [
+        {
+          id: merchandiseVariantSku
+        }
+      ];
+      wcs.trans(_conv);
+      console.log(_conv, 'add_to_cart')
+    }
+  });
+});
+analytics.subscribe("checkout_started", async (event) => {
+  const checkout = event.data.checkout;
+  const lineItems = checkout.lineItems;
+  delay(() => {
+    if (window.wcs) {
+      const _conv = {};
+      _conv.type = "begin_checkout";
+      _conv.items = lineItems.map(item => {
+        const variant = item.variant;
+        return {
+          id: variant.sku,
+          name: item.title,
+          quantity: item.quantity,
+          payAmount: item.finalLinePrice.amount,
+          option: variant.title
+        }
+      })
+      wcs.trans(_conv);
+      console.log(_conv, 'begin_checkout')
+    }
+  });
+});
+
+// analytics.subscribe("checkout_completed", async (event) => {
+//   const checkout = event.data.checkout;
+//   const lineItems = checkout.lineItems;
+//   const checkoutTotalPrice = checkout.totalPrice.amount;
+//   delay(() => {
+//     if (window.wcs) {
+//       const _conv = {};
+//       _conv.type = "purchase";
+//       _conv.id = checkout.order.id; // 전환행동에 대한 ID (구매의 경우 주문번호 권장)
+//       _conv.items = lineItems.map(item => {
+//         console.log(item);
+//         const variant = item.variant;
+//         return {
+//           id: variant.sku,
+//           name: item.title,
+//           quantity: item.quantity,
+//           payAmount: item.finalLinePrice.amount,
+//           option: variant.title
+//         }
+//       })
+//       _conv.value = checkoutTotalPrice;
+//       wcs.trans(_conv);
+//       console.log(_conv, 'purchase')
+//     }
+//   });
+// });
+});})(self.webPixelsManager.createShopifyExtend('38568189', 'custom'));
+
+</script>
+
+  <script type="text/javascript" async="" src="./synchronizer.js.다운로드"></script></head>
+  <body>
+
+</body></html>

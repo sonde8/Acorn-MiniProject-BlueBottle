@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!-- saved from url=(0143)https://kr.bluebottlecoffee.com/web-pixels@73b305c4w82c1918fpb7086179m603a4010/custom/web-pixel-36733181@2/sandbox/modern/products/nola-instant -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>크래프트 인스턴트 커피 블랜드 놀라 1팩 – BLUE BOTTLE COFFEE KOREA</title>
+    <script id="daum-kap-js" src="./kp.js.다운로드"></script><script src="./s73b305c4w82c1918fpb7086179m603a4010m.js.다운로드"></script>
+
+    <script type="text/javascript">
+  (function(shopify) {shopify.extend('WebPixel::Render', function(api) {
+var analytics=api.analytics,browser=api.browser,init=api.init;
+const kakaoId = '4161379786078240826';
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//t1.daumcdn.net/kas/static/kp.js";
+  fjs.parentNode.insertBefore(js, fjs);
+})(document, 'script', 'daum-kap-js');
+
+const delay = (f, d = 1500) => setTimeout(f, d);
+
+analytics.subscribe("page_viewed", async (event) => {
+  delay(function(){
+    kakaoPixel(kakaoId).pageView();
+    console.info('pageView')
+  });
+});
+analytics.subscribe("search_submitted", async (event) => {
+  const searchResult = event.data.searchResult;
+  const searchQuery = searchResult.query;
+  delay(function(){
+    kakaoPixel(kakaoId).search({
+      keyword: searchQuery
+    });
+    console.info('search_submitted', searchQuery)
+  });
+});
+analytics.subscribe("product_viewed", async (event) => {
+  console.info('start view_item');
+  const productSku = event.data.productVariant.sku;
+
+  delay(function(){
+    kakaoPixel(kakaoId).viewContent({
+      id: productSku
+    });
+    console.info('product_viewed', productSku)
+  });
+});
+analytics.subscribe("product_added_to_cart", async (event) => {
+  const cartLine = event.data.cartLine;
+  const merchandiseVariantSku = cartLine.merchandise.sku;
+  delay(function(){
+    kakaoPixel(kakaoId).addToCart({
+      id: merchandiseVariantSku
+    });
+    console.info('product_viewed', merchandiseVariantSku)
+  });
+});
+analytics.subscribe("cart_viewed", async (event) => {
+  delay(function(){
+    kakaoPixel(kakaoId).viewCart();
+    console.info('viewCart')
+  });
+});
+analytics.subscribe("checkout_completed", async (event) => {
+  delay(function(){
+    kakaoPixel(kakaoId).purchase();
+    console.info('purchase')
+  });
+});
+});})(self.webPixelsManager.createShopifyExtend('36733181', 'custom'));
+
+</script>
+
+  </head>
+  <body>
+
+</body></html>

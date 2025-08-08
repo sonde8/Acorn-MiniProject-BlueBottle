@@ -1,0 +1,15 @@
+.bbck-video .desc{
+    color: #333;
+    text-align: center;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 350;
+    line-height: 1.4;
+    margin:40px 0 0 0;
+}
+
+@media screen and (min-width:990px) {
+    .bbck-video .desc{
+        margin:60px 0 0 0;
+    }
+}
