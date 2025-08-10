@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./index.css">
+
+  <style>
+    /* 폰트 설정 */
+    @import url('//fonts.googleapis.com/earlyaccess/notosanskr.css');
+
+    html,
+    body {
+      overflow-x: hidden;
+      max-width: 100vw;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      margin: 0;
+      background-color: #FDFBF7;
+      /* padding-top: 80px; */
+    }
+
+    /* 상단 부분 */
+
+    .text-slide-container {
+      overflow: hidden;
+      position: relative;
+      /* 이것도 중요 */
+      width: 100%;
+      /* 명확한 너비 지정 */
+      z-index: 1001;
+      background-color: white;
+    }
+
+    .text-slide {
+      text-align: center;
+      font-size: 12px;
+      height: 30px;
+      line-height: 30px;
+      max-width: 100%;
+    }
+
+    /*메인 이미지 영역*/
+    .img-wrap {
+      position: absolute;
+      width: 100%;
+      height: 630px;
+      border: 0;
+      box-shadow: none;
+      border-radius: 0;
+      background-image: url("./img이동규/놀라메인이미지.webp");
+      background-position: center;
+      background-size: cover;
+      position: relative;
+
+    }
+
+    /*메인 이미지안에 텍스트 영역*/
+    .imgWrap-text {
+      width: 431px;
+      color: white;
+      position: absolute;
+      top: 65%;
+      left: 3.5%;
+    }
+
+    .imgWrap-p {
+      font-size: 40px;
+    }
+
+
+    /*상품영역*/
+    .product-wrap {
+      width: 1450px;
+      /*border: 1px solid black;*/
+      margin: 0 auto;
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      column-gap: 20px;
+      row-gap: 30px;
+      padding: 10px 0;
+      margin-top: 40px;
+    }
+
+    /*상품 박스 CSS*/
+    .product-box {
+      width: 470px;
+      height: 610px;
+      background-color: #f9f6f0;
+      list-style: none;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-box a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /*히든영역*/
+    .hidden-box {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0px;
+      left: 0px;
+      transition: 0.s;
+      opacity: 0;
+      overflow: hidden;
+    }
+
+    .hidden-box img:hover {
+      transform: scale(1.03);
+    }
+
+    .hidden-box img {
+      width: 100%;
+      height: 90%;
+      transition: 0.3s ease;
+    }
+
+    .hidden-text {
+      width: 100%;
+      height: 10%;
+      background-color: #545454;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
+
+    .product-box:hover .hidden-box {
+      opacity: 1;
+    }
+
+    .hidden-text2 {
+      width: 100%;
+      height: 30%;
+      /*border: 1px solid black;*/
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      color: white;
+      text-align: center;
+    }
+
+    .hidden-text2 h6 {
+      font-size: 17px;
+    }
+
+
+    /*상품이미지영역*/
+    .img-box {
+      width: 100%;
+      height: 70%;
+      /*border: 1px solid black;*/
+    }
+
+
+    .img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: black;
+    }
+
+    /*상품 이름 영역*/
+    .name-box {
+      width: 100%;
+      height: 30%;
+      /*border: 1px solid black;*/
+      text-align: center;
+      color: #333;
+    }
+
+    .name-box h6 {
+      font-size: 17px;
+    }
+
+    /*카드뱃지*/
+    .card-badge {
+      color: #fff;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 26px;
+      letter-spacing: 1.44px;
+      background: #545454;
+      position: absolute;
+      transform: rotate(45deg);
+      z-index: 1;
+      min-width: 180px;
+      right: -35px;
+      top: 41px;
+    }
+
+    /*푸터영역*/
+    /* 푸터 부분 css 시작 */
+    footer {
+      height: 450px;
+      padding: 80px 0 40px;
+      background-color: #333333;
+      color: white;
+    }
+
+    .footer-body {
+      display: flex;
+    }
+
+    .footer-items {
+      display: flex;
+      padding: 0 112px;
+    }
+
+    .footer-item {
+      width: 340px;
+      height: 240px;
+    }
+
+    .footer-item h2 {
+      font-size: 14px;
+    }
+
+    .footer-item ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-item ul li {
+      font-size: 12px;
+      font-weight: 500;
+      margin: 0 15px 16px 0;
+    }
+
+    .footer-newletter h2 {
+      font-size: 14px;
+    }
+
+    .footer-newletter h2 p {
+      font-size: 12px;
+    }
+
+    .footer-newletter div {
+      margin-top: 5px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .footer-newletter input {
+      width: 100%;
+      height: 27px;
+      background-color: #333333;
+      outline: none;
+      border: none;
+      border-bottom: 1px solid white;
+      color: white;
+      margin-top: 30px;
+    }
+
+    .footer-newletter input::placeholder {
+      color: white;
+    }
+
+    .sns {
+      list-style: none;
+      display: flex;
+      padding: 0;
+    }
+
+    .sns img {
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      padding: 12px 12px 12px 0;
+    }
+
+    .footer-info {
+      padding: 0 112px;
+      margin-top: 40px;
+      font-size: 12px;
+    }
+
+    .footer-info-item {
+      margin-bottom: 10px;
+    }
+
+    .footer-copyright {
+      margin: 24px 0 0;
+      padding: 0 112px;
+      border-top: 0.5px solid white;
+      font-size: 12px;
+    }
+
+    .copyright-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .copyright-wrap ul {
+      padding: 0;
+    }
+
+    .footer-copyright ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+  </style>
+
+  <script>
+    // 텍스트 슬라이드
+    let text = [
+      "5만원 이상 구매 시 로고 파우치 증정 (8/4 ~ 소진시까지)",
+      "블루보틀 서울력 놀라 팝업 카페 오픈",
+      "35,000원 이상 구매 시 무료 배송 (제주도 별도)"
+    ]
+
+    let i = 1;
+    function next() {
+      const textSlide = document.querySelector(".text-slide");
+      textSlide.textContent = text[i];
+      i++;
+
+      if (i >= text.length) {
+        i = 0;
+      }
+
+      textSlide.animate(
+        [
+          { transform: 'translateX(100%)', offset: 0 },  // 아래에서 시작
+          { transform: 'translateX(0)', offset: 0.3 },
+          { transform: 'translateX(0)', offset: 0.7 },
+          { transform: 'translateX(-100%)', offset: 1 }
+        ],
+        {
+          duration: 4500,
+          easing: 'ease-in-out',
+          fill: 'forwards'
+        }
+      );
+    };
+
+    function init() {
+      document.querySelector(".text-slide").textContent = text[0]
+
+      setInterval(next, 5000);
+    }
+
+    // 로그인 창 나오게 하는 함수
+    function loginPopUp() {
+      const loginPopup = document.querySelector(".login-popup");
+      const overlay = document.querySelector(".overlay-login");
+
+      loginPopup.classList.add("active"); // 클래스명만, 변수명 통일
+      overlay.classList.add("active")
+    }
+
+    // 로그인 창 들어가게 하는 함수
+    function closeLogin() {
+      const loginPopup = document.querySelector(".login-popup");
+      const overlay = document.querySelector(".overlay-login");
+
+      loginPopup.classList.remove("active"); // 클래스명만, 변수명 통일
+      overlay.classList.remove("active")
+    };
+
+    // 쇼핑 창 나오게 하는 함수
+    function shoppingPopup() {
+      const shoppingSlide = document.querySelector(".shopping-slide");
+      const overlay = document.querySelector(".overlay-shopping");
+
+      shoppingSlide.classList.add("active");
+      overlay.classList.add("active");
+      document.body.classList.add("no-scroll");
+    }
+
+    // 쇼핑 창 들어가게 하는 함수
+    function closeShopping() {
+      const shoppingSlide = document.querySelector(".shopping-slide");
+      const overlay = document.querySelector(".overlay-shopping");
+      const detailSlide = document.querySelector(".detail-slide");
+
+      shoppingSlide.classList.remove("active");
+      overlay.classList.remove("active");
+      detailSlide.classList.remove("active");
+      document.body.classList.remove("no-scroll");
+    }
+
+    // 쇼핑 세부 카테고리 
+    const categoryData = {
+      coffee: {
+        title: '커피',
+        items: [
+          { name: '모든 커피', link: '/블루보틀커피_ALL커피모음.html' },
+          { name: '블렌드', link: '/블루보틀커피_블렌드.html' },
+          { name: '싱글 오리진', link: '/블루보틀커피_싱글오리진.html' },
+          { name: '인스턴트', link: '/블루보틀커피_인스턴트.html' },
+          { name: '콜드브루', link: '/블루보틀커피_콜드브루.html' },
+          { name: '휴먼 메이드', link: '/블루보틀커피_휴먼메이드.html' },
+          { name: '세트', link: '/블루보틀커피_세트.html' }
+        ]
+      },
+      tumbler: {
+        title: '컵과 텀블러',
+        items: [
+          { name: '모든 컵과 텀블러', link: '/블루보틀_ALL컵모음.html' },
+          { name: '텀블러', link: '/블루보틀_텀블러.html' },
+          { name: '컵과 머그', link: '/블루보틀_컵과머그.html' },
+          { name: '유리잔', link: '/블루보틀_유리잔.html' }
+        ]
+      },
+      brewing: {
+        title: '브루잉 도구',
+        items: [
+          { name: '모든 브루잉 도구', link: '/블루보틀브루밍도구_ALL도구모음.html' },
+          { name: '브루잉 도구', link: '/블루보틀브루밍도구_브루잉도구.html' },
+          { name: '액세서리', link: '/블루보틀루밍도구_브루잉액세서리.html' },
+          { name: '필터', link: '/블루보틀브루밍도구_커피핕터.html' },
+          { name: '그라인더', link: '/블루보틀브루밍도구_그라인더.html' }
+        ]
+      }
+    };
+
+    // 세부 카테고리 열기
+    function openDetailCategory(category) {
+      const detailSlide = document.querySelector(".detail-slide");
+      const detailTitle = document.getElementById("detail-title");
+      const detailList = document.getElementById("detail-list");
+
+      // 카테고리 데이터 가져오기
+      const data = categoryData[category];
+
+      // 제목 설정
+      detailTitle.textContent = data.title;
+
+      // 리스트 항목 생성
+      detailList.innerHTML = '';
+      data.items.forEach(item => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.textContent = item.name;
+        a.href = item.link; // 실제 링크 설정
+
+        li.appendChild(a);
+        detailList.appendChild(li);
+      });
+
+      // 세부 슬라이드 열기
+      detailSlide.classList.add("active");
+    }
+
+    // 세부 카테고리 닫기 (뒤로가기)
+    function closeDetailSlide() {
+      const detailSlide = document.querySelector(".detail-slide");
+      detailSlide.classList.remove("active");
+    }
+  </script>
+</head>
+
+<body onload="init()">
+
+  <!-- 오버레이 -->
+  <div class="overlay-login"></div>
+  <div class="overlay-shopping"></div>
+
+  <!-- 로그인 슬라이드 -->
+  <div class="login-popup">
+    <button class="close-btn" onclick="closeLogin()">닫기x</button>
+    <div class="login-page">
+      <div class="login-section">
+        <h1 class="login">
+          로그인 <br>
+          <span>블루보틀 온라인 스토어의 다양한 혜택을 만나보세요</span>
+        </h1>
+        <div class="login-forn">
+          <form action="">
+            <div class="email">
+              <input type="text" placeholder="이메일 주소 *">
+            </div>
+            <div class="password">
+              <input type="password" placeholder="비밀번호 *">
+            </div>
+            <a href="" class="forgetPw">비밀번호를 잊으셨나요?</a>
+            <button class="login-btn">로그인</button>
+            <button class="join-btn">회원 가입</button>
+          </form>
+        </div>
+        <div class="snsbutton-wrap">
+          <a href="">
+            <img src="./img/naver.png" alt="" class="sns-btn">
+          </a>
+          <a href="">
+            <img src="./img/kakaotalk.png" alt="" class="sns-btn">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 쇼핑 슬라이드 -->
+  <div class="shopping-slide">
+    <button class="close-btn2" onclick="closeShopping()">X</button>
+    <div>
+      <ul>
+        <li>
+          <a href="#" onclick="openDetailCategory('coffee'); return false;">커피</a>
+        </li>
+        <li>
+          <a href="#" onclick="openDetailCategory('tumbler'); return false;">컵과 텀블러</a>
+        </li>
+        <li>
+          <a href="#" onclick="openDetailCategory('brewing'); return false;">브루잉 도구</a>
+        </li>
+        <li>
+          <a href="/LifeStyle.html" onclick="openDetailCategory('lifestyle'); return false;">라이프 스타일</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 쇼핑 세부 카테고리 슬라이드 -->
+  <div class="detail-slide">
+    <button class="back-btn" onclick="closeDetailSlide()">←</button>
+    <button class="close-btn3" onclick="closeShopping()">X</button>
+    <h3 id="detail-title">카테고리</h3>
+    <div>
+      <ul id="detail-list">
+        <!-- 동적으로 생성될 세부 항목들 -->
+      </ul>
+    </div>
+  </div>
+
+
+  <!-- 택스트 슬라이드 -->
+  <div class="text-slide-container">
+    <div class="text-slide"></div>
+  </div>
+  <!-- <div class="text-slide"> -->
+
+  </div>
+
+  <!-- 헤더 -->
+  <header>
+    <!-- 메뉴 -->
+    <div>
+      <ul class="list-menu">
+        <li onclick="shoppingPopup()">쇼핑</li>
+        <li>
+          <a href="./BestSeller.html">베스트셀러</a>
+        </li>
+        <li>
+          <a href="./Nola.html">NOLA</a>
+        </li>
+        <li>
+          <a href="./Cafe.html">카페</a>
+        </li>
+        <li>
+          <a href="./Blog.html">블로그</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 로고 -->
+    <div>
+      <a href="/index.html">
+        <img src="./img/logo.png" alt="" class="logo">
+      </a>
+    </div>
+
+    <!-- 검색,회원,장바구니 -->
+    <div class="header-icon">
+      <span>
+        <img src="./img/search1.png" alt="">
+      </span>
+      <span>
+        <img src="./img/user1.png" alt="" onclick="loginPopUp()">
+      </span>
+      <span>
+        <img src="./img/basket1.png" alt="">
+      </span>
+    </div>
+  </header>
+
+  <!--이미지영역-->
+  <div class="img-wrap">
+    <div class="imgWrap-text">
+      <p class="imgWrap-p">놀라 NOLA</p>
+
+
+    </div>
+  </div>
+
+  <!--상품영역-->
+  <div class="big-wrap">
+    <div class="middle-wrap">
+      <ul class="product-wrap">
+        <!--첫번째 줄-->
+        <li class="product-box">
+          <a href="./OrderColdWhite.html">
+            <!--상품이미지-->
+            <div class="img-box">
+              <img src="./img이동규/카터콜드화이트.webp">
+            </div>
+            <!--상품이름-->
+            <div class="name-box">
+              <p>텀블러</p>
+              <h6>카터 콜드 화이트 16oz 화이트 (473ml)</h6>
+            </div>
+            <!--히든영역-->
+            <div class="hidden-box">
+              <img src="./img이동규/호버-카터콜드화이트.webp">
+              <div class="hidden-text">카트에추가</div>
+              <div class="hidden-text2">
+                <p>텀블러</p>
+                <h6>카터 콜드 화이트 16oz 화이트 (473ml)</h6>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="product-box">
+          <a href="./OrderCommonGold.html">
+            <!--상품이미지-->
+            <div class="img-box">
+              <img src="./img이동규/커먼골드글라스2잔세트.webp">
+            </div>
+            <!--상품이름-->
+            <div class="name-box">
+              <p>유리잔</p>
+              <h6>커먼 콜드 드링크 글라스 2잔 세트</h6>
+            </div>
+            <!--히든영역-->
+            <div class="hidden-box">
+              <img src="./img이동규/호버-커먼콜드글라스2잔세트.webp">
+              <div class="hidden-text">카트에추가</div>
+              <div class="hidden-text2">
+                <p>유리잔</p>
+                <h6>커먼 콜드 드링크 글라스 2잔 세트</h6>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="product-box">
+          <a href="./OrderCarter.html">
+            <!--상품이미지-->
+            <div class="img-box">
+              <img src="./img이동규/카터무브시스템세트.webp">
+            </div>
+            <!--상품이름-->
+            <div class="name-box">
+              <p>텀블러</p>
+              <h6>카터 무브 3-IN리드 시스템 세트</h6>
+            </div>
+            <!--히든영역-->
+            <div class="hidden-box">
+              <img src="./img이동규/호버-카터무브시스템세트.webp">
+              <div class="hidden-text">카트에추가</div>
+              <div class="hidden-text2">
+                <p>텀블러</p>
+                <h6>카터 무브 3-IN리드 시스템 세트</h6>
+              </div>
+            </div>
+          </a>
+        </li>
+        <!--두번째 줄-->
+        <li class="product-box">
+          <a href="">
+            <!--상품이미지-->
+            <div class="img-box">
+              <img src="./img이동규/에스프레소 싱글 서브 놀라 세트.webp">
+            </div>
+            <!--상품이름-->
+            <div class="name-box">
+              <p>인스턴트</p>
+              <h6>크래프트 인스턴트 커피 에스프레소 싱글 서브 & 놀라 인스턴트 세트</h6>
+            </div>
+            <!--히든영역-->
+            <div class="hidden-box">
+              <img src="./img이동규/호버-싱글서브2팩.webp">
+              <div class="hidden-text">카트에추가</div>
+              <div class="hidden-text2">
+                <p>인스턴트</p>
+                <h6>크래프트 인스턴트 커피 에스프레소 싱글 서브 & 놀라 인스턴트 세트</h6>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="product-box">
+          <a href="">
+            <!--상품이미지-->
+            <div class="img-box">
+              <img src="./img이동규/놀라 클리어 콜드 텀블러 세트.webp">
+            </div>
+            <!--상품이름-->
+            <div class="name-box">
+              <p>커피 세트</p>
+              <h6>크래프트 인스턴트 커피 블랜드 놀라 & 클리어 콜드 텀블러 20oz 세트</h6>
+            </div>
+            <!--히든영역-->
+            <div class="hidden-box">
+              <img src="./img이동규/호버-놀라 클리어 콜트 텀블러 세트.webp">
+              <div class="hidden-text">카트에추가</div>
+              <div class="hidden-text2">
+                <p>커피 세트</p>
+                <h6>크래프트 인스턴트 커피 블랜드 놀라 & 클리어 콜드 텀블러 20oz 세트</h6>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="product-box">
+          <a href="">
+            <!--상품이미지-->
+            <div class="img-box">
+              <img src="./img이동규/클리어 콜드 텀블러.webp">
+            </div>
+            <!--상품이름-->
+            <div class="name-box">
+              <p>텀블러</p>
+              <h6>클리어 콜드 텀블러 20oz (591ml)</h6>
+            </div>
+            <!--히든영역-->
+            <div class="hidden-box">
+              <img src="./img이동규/호버-클리어 콜드 텀블러.webp">
+              <div class="hidden-text">카트에추가</div>
+              <div class="hidden-text2">
+                <p>텀블러</p>
+                <h6>클리어 콜드 텀블러 20oz (591ml)</h6>
+              </div>
+            </div>
+          </a>
+        </li>
+        <!--세번째 줄-->
+        <li class="product-box">
+          <a href="">
+            <!--상품이미지-->
+            <div class="img-box">
+              <img src="img이동규/블랜드 놀라1팩.webp">
+            </div>
+            <!--상품이름-->
+            <div class="name-box">
+              <p>인스턴트</p>
+              <h6>크래프트 인스턴트 커피 블랜드 놀라 1팩</h6>
+            </div>
+            <!--히든영역-->
+            <div class="hidden-box">
+              <img src="img이동규/호버-블랜드놀라.webp">
+              <div class="hidden-text">카트에추가</div>
+              <div class="hidden-text2">
+                <p>인스턴트</p>
+                <h6>크래프트 인스턴트 커피 블랜드 놀라 1팩</h6>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="product-box">
+          <a href="">
+            <!--상품이미지-->
+            <div class="img-box">
+              <img src="./img이동규/블랜드 놀라3팩.webp">
+            </div>
+            <!--상품이름-->
+            <div class="name-box">
+              <p>인스턴트</p>
+              <h6>크래프트 인스턴트 커피 블랜드 놀라 3팩 세트</h6>
+            </div>
+            <!--히든영역-->
+            <div class="hidden-box">
+              <img src="./img이동규/호버-블랜드놀라3팩.webp">
+              <div class="hidden-text">카트에추가</div>
+              <div class="hidden-text2">
+                <p>인스턴트</p>
+                <h6>크래프트 인스턴트 커피 블랜드 놀라 3팩 세트</h6>
+              </div>
+            </div>
+          </a>
+        </li>
+
+        <li class="product-box">
+          <a href="">
+            <!--상품이미지-->
+            <div class="img-box">
+              <img src="./img이동규/더블월 써모 글라스 세트.webp">
+            </div>
+            <!--상품이름-->
+            <div class="name-box">
+              <p>유리잔</p>
+              <h6>더블월 써모 글라스 세트 (각 350ml)</h6>
+            </div>
+            <!--히든영역-->
+            <div class="hidden-box">
+              <img src="./img이동규/호버-더블월 써모 글라스 세트.webp">
+              <div class="hidden-text">카트에추가</div>
+              <div class="hidden-text2">
+                <p>유리잔</p>
+                <h6>더블월 써모 글라스 세트 (각 350ml)</h6>
+              </div>
+            </div>
+          </a>
+        </li>
+        <!--네번째 줄-->
+        <li class="product-box">
+          <a href="">
+            <!--상품이미지-->
+            <div class="img-box">
+              <img src="./img이동규/더블월 글라스.webp">
+            </div>
+            <!--상품이름-->
+            <div class="name-box">
+              <p>유리잔</p>
+              <h6>더블월 글라스 (390ml)</h6>
+            </div>
+            <!--히든영역-->
+            <div class="hidden-box">
+              <img src="./img이동규/호버-더블월 글라스.webp">
+              <div class="hidden-text">카트에추가</div>
+              <div class="hidden-text2">
+                <p>유리잔</p>
+                <h6>더블월 글라스 (390ml)</h6>
+              </div>
+            </div>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+
+  <!-- 풋터 -->
+  <footer>
+    <div class="footer-wrap">
+      <div class="footer-body">
+        <div class="footer-title"></div>
+        <div class="footer-items">
+          <div class="footer-item">
+            <h2>블루보틀 커피</h2>
+            <ul>
+              <li>카페 찾기</li>
+              <li>커리어</li>
+            </ul>
+          </div>
+          <div class="footer-item">
+            <h2>알아보기</h2>
+            <ul>
+              <li>브랜드 소개</li>
+              <li>블루보틀 커피</li>
+              <li>지속가능성</li>
+              <li>브루잉 가이드</li>
+              <li>블로그</li>
+            </ul>
+          </div>
+          <div class="footer-item">
+            <h2>문의</h2>
+            <ul>
+              <li>고객 문의</li>
+              <li>단체/기업 구매 문의</li>
+              <li>자주 묻는 질문</li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-newletter">
+            <h2>구독하고 최신 정보를 받아보세요</h2>
+            <h2>
+              <p>이메일 뉴스레터에 가입하여 독점 혜택, 블루보틀 뉴스, 이벤트, 그리고 기분 좋은 신제품 소식을 누구보다 먼저 알아보세요.</p>
+            </h2>
+            <div>
+              <input type="text" placeholder="이메일 주소를 입력해주세요.">
+            </div>
+            <div>
+              개인정보 처리 방침 및 이용 약관
+            </div>
+            <ul class="sns">
+              <li>
+                <img src="./img/facebook.png" alt="">
+              </li>
+              <li>
+                <img src="./img/x.png" alt="">
+              </li>
+              <li>
+                <img src="./img/instagram.png" alt="">
+              </li>
+              <li>
+                <img src="./img/youtube.png" alt="">
+              </li>
+              <li>
+                <img src="./img/kakao.png" alt="">
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-info">
+        <div>
+          <div>
+            <div class="footer-info-item">
+              <span>상호: 블루보틀커피코리아 유한회사</span>
+              I
+              <span>대표자: KARL WILLIAM STROVINK</span>
+              I
+              <span>개인정보관리책임자: 임홍주</span>
+            </div>
+            <div class="footer-info-item">
+              <span>사업자등록번화: 155-81-01195</span>
+              I
+              <span>사업정보확인</span>
+              I
+              <span>통신판매업신고: 2023-서울성동-0715</span>
+              I
+              <span>대표번호: 1533-6906</span>
+            </div>
+            <div class="footer-info-item">
+              <span>이메일: support_kr@blubottlecoffee.com</span>
+              I
+              <span>주소: 서울특별시 성동구 아차산로 7(성수동1가)</span>
+              I
+              <span>호스팅서비스 제공자: Shopify, Inc</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-copyright">
+      <div class="copyright-wrap">
+        <ul>
+          <li>개인정보 처리방침</li>
+          <li>판매이용약관</li>
+          <li>환불정책</li>
+        </ul>
+        <div>
+          © 2023 BLUE BOTTLE COFFEE INC., ALL RIGHTS RESERVED
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

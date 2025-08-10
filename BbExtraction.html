@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./index.css">
+
+  <style>
+    @import url('//fonts.googleapis.com/earlyaccess/notosanskr.css');
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      margin: 0;
+    }
+
+    .text-slide-container {
+      overflow: hidden;
+      position: relative;
+      /* 이것도 중요 */
+      width: 100%;
+      /* 명확한 너비 지정 */
+      background-color: white;
+      z-index: 1000;
+    }
+
+    .text-slide {
+      text-align: center;
+      font-size: 12px;
+      height: 30px;
+      line-height: 30px;
+      max-width: 100%;
+    }
+
+    header {
+      height: 80px;
+      padding: 0 60px;
+      /* grid를 사용해야함 */
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      background-color: #FDFBF7;
+      align-items: center;
+      z-index: 900;
+      position: relative;
+    }
+
+    /* 상단 5개 메뉴  */
+    .list-menu {
+      display: flex;
+      list-style: none;
+      gap: 40px;
+      font-size: 14px;
+      align-items: center;
+      padding: 0;
+    }
+
+    .list-menu li a {
+      text-decoration: none;
+      color: black;
+    }
+
+    /* 상단 3개 아이콘 */
+    .header-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      justify-self: end;
+    }
+
+    .header-icon span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+    }
+
+    .header-icon img {
+      width: 35px;
+      height: 35px;
+    }
+
+    .logo {
+      height: 57px;
+      width: 23px;
+    }
+
+    header css .wrap {
+      border: 1px solid black;
+      background-color: #fcfbf7;
+      color: #4b4b4b;
+    }
+
+    .wap {
+      text-align: center;
+      background-color: #fcfbf7;
+      padding: 70px 0;
+    }
+
+    .wp {
+      text-align: center;
+      padding: 50px 0px;
+      background-color: #fcfbf7;
+    }
+
+    .wp img {
+      width: 55%;
+    }
+
+    footer {
+      height: 450px;
+      padding: 80px 0 40px;
+      background-color: #333333;
+      color: white;
+    }
+
+    .footer-body {
+      display: flex;
+    }
+
+    .footer-items {
+      display: flex;
+      padding: 0 112px;
+    }
+
+    .footer-item {
+      width: 340px;
+      height: 240px;
+    }
+
+    .footer-item h2 {
+      font-size: 14px;
+    }
+
+    .footer-item ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-item ul li {
+      font-size: 12px;
+      font-weight: 500;
+      margin: 0 15px 16px 0;
+    }
+
+    .footer-newletter h2 {
+      font-size: 14px;
+    }
+
+    .footer-newletter h2 p {
+      font-size: 12px;
+    }
+
+    .footer-newletter div {
+      margin-top: 5px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .footer-newletter input {
+      width: 100%;
+      height: 27px;
+      background-color: #333333;
+      outline: none;
+      border: none;
+      border-bottom: 1px solid white;
+      color: white;
+      margin-top: 30px;
+    }
+
+    .footer-newletter input::placeholder {
+      color: white;
+    }
+
+    .sns {
+      list-style: none;
+      display: flex;
+      padding: 0;
+    }
+
+    .sns img {
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      padding: 12px 12px 12px 0;
+    }
+
+    .footer-info {
+      padding: 0 112px;
+      margin-top: 40px;
+      font-size: 12px;
+    }
+
+    .footer-info-item {
+      margin-bottom: 10px;
+    }
+
+    .footer-copyright {
+      margin: 24px 0 0;
+      padding: 0 112px;
+      border-top: 0.5px solid white;
+      font-size: 12px;
+    }
+
+    .copyright-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .copyright-wrap ul {
+      padding: 0;
+    }
+
+    .footer-copyright ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+  </style>
+</head>
+
+<body onload="init()">
+  <script src="./index.js"></script>
+
+  <!-- 오버레이 -->
+  <div class="overlay-login"></div>
+  <div class="overlay-shopping"></div>
+
+  <!-- 로그인 슬라이드 -->
+  <div class="login-popup">
+    <button class="close-btn" onclick="closeLogin()">닫기x</button>
+    <div class="login-page">
+      <div class="login-section">
+        <h1 class="login">
+          로그인 <br>
+          <span>블루보틀 온라인 스토어의 다양한 혜택을 만나보세요</span>
+        </h1>
+        <div class="login-forn">
+          <form action="">
+            <div class="email">
+              <input type="text" placeholder="이메일 주소 *">
+            </div>
+            <div class="password">
+              <input type="password" placeholder="비밀번호 *">
+            </div>
+            <a href="" class="forgetPw">비밀번호를 잊으셨나요?</a>
+            <button class="login-btn">로그인</button>
+            <button class="join-btn">회원 가입</button>
+          </form>
+        </div>
+        <div class="snsbutton-wrap">
+          <a href="">
+            <img src="./img/naver.png" alt="" class="sns-btn">
+          </a>
+          <a href="">
+            <img src="./img/kakaotalk.png" alt="" class="sns-btn">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 쇼핑 슬라이드 -->
+  <div class="shopping-slide">
+    <button class="close-btn2" onclick="closeShopping()">X</button>
+    <div>
+      <ul>
+        <li>
+          <a href="#" onclick="openDetailCategory('coffee'); return false;">커피</a>
+        </li>
+        <li>
+          <a href="#" onclick="openDetailCategory('tumbler'); return false;">컵과 텀블러</a>
+        </li>
+        <li>
+          <a href="#" onclick="openDetailCategory('brewing'); return false;">브루잉 도구</a>
+        </li>
+        <li>
+          <a href="/LifeStyle.html" onclick="openDetailCategory('lifestyle'); return false;">라이프 스타일</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 쇼핑 세부 카테고리 슬라이드 -->
+  <div class="detail-slide">
+    <button class="back-btn" onclick="closeDetailSlide()">←</button>
+    <button class="close-btn3" onclick="closeShopping()">X</button>
+    <h3 id="detail-title">카테고리</h3>
+    <div>
+      <ul id="detail-list">
+        <!-- 동적으로 생성될 세부 항목들 -->
+      </ul>
+    </div>
+  </div>
+
+  <!-- 택스트 슬라이드 -->
+  <div class="text-slide-container">
+    <div class="text-slide"></div>
+  </div>
+
+  <!-- 헤더 -->
+  <header>
+    <!-- 메뉴 -->
+    <div>
+      <ul class="list-menu">
+        <li onclick="shoppingPopup()">쇼핑</li>
+        <li>
+          <a href="./BestSeller.html">베스트셀러</a>
+        </li>
+        <li>
+          <a href="./Nola.html">NOLA</a>
+        </li>
+        <li>
+          <a href="./Cafe.html">카페</a>
+        </li>
+        <li>
+          <a href="./Blog.html">블로그</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 로고 -->
+    <div>
+      <a href="/index.html">
+        <img src="./img/logo.png" alt="" class="logo">
+      </a>
+    </div>
+
+    <!-- 검색,회원,장바구니 -->
+    <div class="header-icon">
+      <span>
+        <img src="./img/search1.png" alt="">
+      </span>
+      <span>
+        <img src="./img/user1.png" alt="" onclick="loginPopUp()">
+      </span>
+      <span>
+        <img src="./img/basket1.png" alt="">
+      </span>
+    </div>
+  </header>
+
+  <!--header 제외한 전체 영역-->
+  <div class="wrap">
+
+    <!--제목 설명-->
+    <div class="wap">
+
+      <h2> 추출이론 : 추론, 강도, 물을 부었을 때 커피가 가장 맛있어지는 <br>
+        스위트 스팟 찾기 </h2>
+      <h4> 블루보틀의 추출 방법 뒤에 숨겨진 “Why” </h4>
+      <h6> 블루보틀 커피 코리아</h6>
+
+    </div>
+
+    <!--이미지-->
+    <div class="wp">
+
+      <img
+        src="https://kr.bluebottlecoffee.com/cdn/shop/files/brew_theory_and_coffee_strength_and_extraction.jpg?v=1721623414&width=2520"
+        alt="이미지">
+
+    </div>
+
+    <!--설명-->
+    <div class="wp">
+
+      <h2> 커피에 물을 붓는 추출 이론</h2>
+
+      <p> 물을 붓는 것은 간단한 과정인데, 어째서 커피에 물을 부어서 추출하는 방식은 그렇게 까다로울까요? 이 방식의 <br>
+        관건은 곱게 갈린 커피에 뜨거운 물을 부어 원두의 맛과 향을 녹여내는 것인데, 커피의 맛과 향을 적절한 비율로 <br>
+        알맞게 녹이기가 어렵기 때문입니다. 커피에 물을 붓는 완벽한 방법은 가장 맛있는 추출 정도와 강도의 레벨이 <br>
+        균형을 이루는 ‘스위트 스팟’을 찾는 것입니다.
+      </p> <br>
+
+      <h2> 커피 강도 및 추출</h2>
+
+      <p> 커피를 향신료가 보관된 장이라 생각하면 추출 및 강도를 보다 쉽게 이해할 수 있습니다. 로스팅한 커피 원두는 <br>
+        다양한 향신료가 담긴 장처럼 여러 맛을 품고 있는데, 이는 휘발성 및 용해성 화합물들입니다.
+      </p> <br>
+
+      <p> 보다 정확히 말해 커피는 일반적으로 30%의 수용성 화합물과 70%의 불용성 화합물로 이루어져 있지요. 하지만 <br>
+        커피는 우리가 원하지 않거나 아주 조금만 느끼고 싶은 맛, 그러니까 재나 담배 또는 탄소 같은 맛이 나는 쓴 <br>
+        화합물도 포함하고 있습니다. 갖가지 향신료가 담긴 요리사의 보관장처럼요. 커피에 물을 붓는 것이 즐거운 이유가 <br>
+        여기 있습니다.
+      </p> <br>
+
+      <p> 어떻게 조절하느냐에 따라 커피 맛이 달라지기 때문입니다. 정확한 비율로 딱 맞는 맛을 뽑아낼 수도 있고, 그러지 <br>
+        못할 수도 있지요. 이 방법은 미슐랭 스타를 받은 셰프의 커피 추출 방식입니다.
+      </p> <br>
+
+      <h2> 커피 강도 </h2>
+
+      <p> 한 잔에 담긴 향미의 농도나 센 정도를 커피의 강도라고 합니다. 커피의 강도는 입맛에 따라 물의 양과 커피의 진함 <br>
+        사이의 스펙트럼으로 결정됩니다. 이 강도는 물에 용해된 커피 양의 백분율로 측정할 수 있는데, 이를 과학 용어로 <br>
+        TDS(용해된 총 용해물)라고 합니다.
+      </p> <br>
+
+      <p> 예를 들어, 잘 만든 에스프레소는 커피 대 물의 TDS가 9~20%입니다. 커피 위에 물을 더 부드럽게 부으면 커피가 <br>
+        1~2%, 물이 98~99%가 되어 TDS가 훨씬 낮아지지요.
+      </p> <br>
+
+      <p> 한 잔에 담긴 향미의 농도나 센 정도를 커피의 강도라고 합니다. 커피의 강도는 입맛에 따라 물의 양과 커피의 진함 <br>
+        사이의 스펙트럼으로 결정됩니다. 이 강도는 물에 용해된 커피 양의 백분율로 측정할 수 있는데, 이를 과학 용어로 <br>
+        TDS(용해된 총 용해물)라고 합니다.
+      </p> <br>
+
+      <p> 강도는 커피를 내리는 양에 따라 크게 달라집니다. 이를 바리스타 용어로 추출 비율 또는 커피양이라고 합니다. <br>
+        쉽게 말해, 커피를 많이 내릴수록 강도는 더 높아집니다. 블루보틀은 그램저울로 커피와 물을 측정하여 정확한 <br>
+        추출 비율을 설정합니다.
+      </p> <br>
+
+      <p> 또한, 커피마다 추출 비율을 달리합니다. 블렌딩이냐 싱글오리진이냐에 따라서도 추출 비율이 다르지요. 블렌딩은 <br>
+        우유를 섞어도 맛을 낼 수 있도록 강도를 약간 높여 물 350g당 커피 30g 비율로 추출합니다. 반면 싱글오리진은 <br>
+        맛을 좀 더 미묘하게 표현할 수 있도록 '양을 조금 줄여서' 물 350g당 커피 22~25g으로 추출 비율을 약간 <br>
+        낮춥니다.
+      </p> <br>
+
+      <p> 외워야 할 게 너무 많아 보이나요? 걱정하지 않아도 됩니다. 커피의 강도를 평가하는 가장 좋은 방법은 외우는 게 <br>
+        아니라 몸으로 판단하는 것, 즉 혀로 커피의 묵직함을 느껴보는 것이니까요. 커피가 탈지유처럼 가볍게 <br>
+        느껴지나요? 아니면 휘핑크림처럼 무겁게 느껴지나요?
+      </p> <br>
+
+      <h2> 커피 추출 </h2>
+
+      <p> 차를 우려낸다고 상상해 보세요. 차를 너무 적게 넣고 우려내면 물을 마시는 것과 다를 바 없을 겁니다. 또한, 차를 <br>
+        너무 오래 우려내면 타르 맛이 나기도 하지요. 커피도 마찬가지입니다. 추출은 커피에서 용해될 수 있는 성분을 <br>
+        분리하는 것으로, 추출을 오래하면 용해되는 성분의 분리 속도가 달라집니다. 이런 속도는 시간, 온도 및 분쇄된 <br>
+        커피와 물의 비율 등의 영향을 받습니다. 또한, 과소 추출된 커피는 신맛이 나고, 과다 추출된 커피는 쓴맛, 심지어 <br>
+        탄 맛이 나기도 하지요.
+      </p> <br>
+
+      <p> 분쇄 커피는 최대 30%가량의 용해성 화합물을 포함하고 있고, 나머지 70% 정도는 물이 침투할 수 없는 섬유질 <br>
+        및 기타 화합물 성분입니다. 하지만 30%가 모두 용해되면 커피 맛은 좋지 않습니다. 한 잔에 18~22% 용해되는 <br>
+        것이 가장 적절하지요.
+      </p> <br>
+
+      <p> 추출은 물을 붓는 속도와 물을 붓는 패턴으로 이루어지는데, 원두의 분쇄 크기에도 영향을 받습니다. 원두를 <br>
+        미세하게 갈면 물이 커피를 통과하는 속도가 느려져서 쓴 화합물이 과다 추출됩니다. 반면 너무 굵게 갈면 물이 <br>
+        달콤하고 맛있는 최상의 화합물을 지나쳐 신맛만 나는 커피가 되기도 하지요. 원두를 제대로 갈아야 최고의 맛을 <br>
+        지닌 화합물이 물에 녹습니다.
+      </p> <br>
+
+      <p> 추출을 평가하는 가장 좋은 방법도 억지로 기억하기보다는 커피를 마시고 느껴보는 것입니다. 커피 한 잔을 다 <br>
+        마신 후에도 여전히 그 맛을 경험할 수 있는지 살펴보세요. 끝맛이 지속되는 시간, 맛이 얼마나 오래 감도는지, <br>
+        입안에서 느껴지는 질감은 어떤지 설명해 보세요. 끝맛이 금방 사라지나요? 아니면 오래 지속되나요? <br>
+        부드러운가요? 아니면 거칠게 느껴지나요?
+      </p> <br>
+
+      <h2> 커피 스위트 스팟 찾기 </h2>
+
+      <p> 커피를 최상으로 추출하는 비결은 ‘스위트 스팟’을 지나면서 커피의 강도와 추출 비율의 균형을 맞추는 것입니다. </p> <br>
+
+      <p> 이제 커피를 내리는 이론과 강도 및 추출 개념을 이해하셨으니 커피 한 잔을 만들어보면 어떨까요? 커피와 물의 <br>
+        비율을 바꾸면 맛이 달라지는 것을 느낄 수 있을 것입니다. 물을 조금 더 추가했을 때 맛이 뚜렷해질 수도, 맛이나 <br>
+        질감이 덜 느껴질 수도 있습니다. 커피 비율을 달리해도 마찬가지입니다. 선호하는 강도가 있다면, 가벼운 <br>
+        싱글오리진이냐 풍부한 블렌드냐에 따라 달라지는지도 확인해 보세요.
+      </p> <br>
+
+      <p> 분쇄부터 물을 붓는 테크닉까지, 커피를 만드는 기술을 익히면서 추출을 계속해 보세요. 하다 보면 어느 순간 모든 <br>
+        면에서 정확하게 초점이 맞춰질 거예요. 그럼 마치 잘 조율된 피아노로 연주하는 음처럼 딱 맞는 맛을 느낄 수 있을 <br>
+        것입니다. 조화로운 화음이 진행되는 것처럼, 커피를 마시는 것은 물론 그 이후까지 오롯이 커피를 느껴보세요. <br>
+        완전히 새로운 커피 경험이 될 거라고 약속합니다.
+      </p>
+
+
+    </div>
+
+    <footer>
+      <div class="footer-wrap">
+        <div class="footer-body">
+          <div class="footer-title"></div>
+          <div class="footer-items">
+            <div class="footer-item">
+              <h2>블루보틀 커피</h2>
+              <ul>
+                <li>카페 찾기</li>
+                <li>커리어</li>
+              </ul>
+            </div>
+            <div class="footer-item">
+              <h2>알아보기</h2>
+              <ul>
+                <li>브랜드 소개</li>
+                <li>블루보틀 커피</li>
+                <li>지속가능성</li>
+                <li>브루잉 가이드</li>
+                <li>블로그</li>
+              </ul>
+            </div>
+            <div class="footer-item">
+              <h2>문의</h2>
+              <ul>
+                <li>고객 문의</li>
+                <li>단체/기업 구매 문의</li>
+                <li>자주 묻는 질문</li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <div class="footer-newletter">
+              <h2>구독하고 최신 정보를 받아보세요</h2>
+              <h2>
+                <p>이메일 뉴스레터에 가입하여 독점 혜택, 블루보틀 뉴스, 이벤트, 그리고 기분 좋은 신제품 소식을 누구보다 먼저 알아보세요.</p>
+              </h2>
+              <div>
+                <input type="text" placeholder="이메일 주소를 입력해주세요.">
+              </div>
+              <div>
+                개인정보 처리 방침 및 이용 약관
+              </div>
+              <ul class="sns">
+                <li>
+                  <img src="./img/facebook.png" alt="">
+                </li>
+                <li>
+                  <img src="./img/x.png" alt="">
+                </li>
+                <li>
+                  <img src="./img/instagram.png" alt="">
+                </li>
+                <li>
+                  <img src="./img/youtube.png" alt="">
+                </li>
+                <li>
+                  <img src="./img/kakao.png" alt="">
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-info">
+          <div>
+            <div>
+              <div class="footer-info-item">
+                <span>상호: 블루보틀커피코리아 유한회사</span>
+                I
+                <span>대표자: KARL WILLIAM STROVINK</span>
+                I
+                <span>개인정보관리책임자: 임홍주</span>
+              </div>
+              <div class="footer-info-item">
+                <span>사업자등록번화: 155-81-01195</span>
+                I
+                <span>사업정보확인</span>
+                I
+                <span>통신판매업신고: 2023-서울성동-0715</span>
+                I
+                <span>대표번호: 1533-6906</span>
+              </div>
+              <div class="footer-info-item">
+                <span>이메일: support_kr@blubottlecoffee.com</span>
+                I
+                <span>주소: 서울특별시 성동구 아차산로 7(성수동1가)</span>
+                I
+                <span>호스팅서비스 제공자: Shopify, Inc</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-copyright">
+        <div class="copyright-wrap">
+          <ul>
+            <li>개인정보 처리방침</li>
+            <li>판매이용약관</li>
+            <li>환불정책</li>
+          </ul>
+          <div>
+            © 2023 BLUE BOTTLE COFFEE INC., ALL RIGHTS RESERVED
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+</body>
+
+</html>
