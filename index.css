@@ -646,6 +646,20 @@ footer {
   /* 오버레이보다 위에 */
 }
 
+.overlay-login {
+  /* 전체 화면을 덮는 설정 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  /* 반투명 검은색 */
+  /* 처음엔 안 보이게 */
+  display: none;
+  z-index: 1000;
+}
+
 /* 여기 두 개가 중요함
   클래스가 추가 되면서 active 클래스가 추가 되어서 위치가 원래대로 돌아옴
 */
@@ -763,19 +777,7 @@ footer {
   height: 55px;
 }
 
-.overlay-login {
-  /* 전체 화면을 덮는 설정 */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  /* 반투명 검은색 */
-  /* 처음엔 안 보이게 */
-  display: none;
-  z-index: 1000;
-}
+
 
 /* 쇼핑 슬라이드 부분 */
 .shopping-slide {
@@ -788,6 +790,20 @@ footer {
   transition: left 0.3s ease;
   background-color: #FDFBF7;
   z-index: 1001;
+}
+
+.overlay-shopping {
+  /* 전체 화면을 덮는 설정 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  /* 반투명 검은색 */
+  /* 처음엔 안 보이게 */
+  display: none;
+  z-index: 800;
 }
 
 .shopping-slide.active {
@@ -825,20 +841,6 @@ footer {
   cursor: pointer;
   color: #666;
   margin-top: 20px;
-}
-
-.overlay-shopping {
-  /* 전체 화면을 덮는 설정 */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  /* 반투명 검은색 */
-  /* 처음엔 안 보이게 */
-  display: none;
-  z-index: 800;
 }
 
 /* 쇼핑 슬라이드 세부 카테고리 부분 */

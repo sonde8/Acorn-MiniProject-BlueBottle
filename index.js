@@ -140,8 +140,8 @@ function shoppingPopup() {
   const shoppingSlide = document.querySelector(".shopping-slide");
   const overlay = document.querySelector(".overlay-shopping");
 
-  shoppingSlide.classList.add("active"); // shoppingPopup → shoppingSlide
-  overlay.classList.add("active"); // 오버레이도 추가
+  shoppingSlide.classList.add("active"); 
+  overlay.classList.add("active"); 
   document.body.classList.add("no-scroll");
 }
 
@@ -151,8 +151,8 @@ function closeShopping() {
   const overlay = document.querySelector(".overlay-shopping");
   const detailSlide  = document.querySelector(".detail-slide");
 
-  shoppingSlide.classList.remove("active"); // shoppingPopup → shoppingSlide
-  overlay.classList.remove("active"); // 오버레이도 추가
+  shoppingSlide.classList.remove("active"); 
+  overlay.classList.remove("active");
   detailSlide.classList.remove("active");
   document.body.classList.remove("no-scroll");
 }
@@ -225,3 +225,4 @@ function closeDetailSlide() {
   const detailSlide = document.querySelector(".detail-slide");
   detailSlide.classList.remove("active");
 }
+

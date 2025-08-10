@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="./index.css
-  ">
+  <link rel="stylesheet" href="./index.css">
+
   <style>
     body {
       width: 2000px;
@@ -18,8 +18,6 @@
     /*메인태그 메인이미지 글자 위치잡아줌*/
     .mainimagetag {
       position: relative;
-
-
     }
 
     /*메인태그속 글자*/
@@ -39,18 +37,13 @@
       display: block;
       object-fit: cover;
       /*이미지 끝 안맞음*/
-
     }
-
-
 
     /*상품 바디*/
     .productBody-life {
       height: 2562.750px;
       border: 1px solid black;
-
     }
-
 
     /* 리스트(기본몸)*/
     .productBox-life {
@@ -67,14 +60,10 @@
       display: flex;
       flex-wrap: wrap;
       gap: 24px;
-
       margin-top: 16px;
       padding: 0;
       list-style: none;
-
-
     }
-
 
     /*엘아이(그림)*/
     .productli-life {
@@ -84,9 +73,7 @@
       height: 481.94px;
       background-color: rgb(249, 246, 240);
       overflow: hidden;
-
     }
-
 
     /*박스엘아이 안  이름,가격영역*/
     .productli-Box {
@@ -98,10 +85,7 @@
       text-align: center;
       font-weight: 600;
       color: gray;
-
-
     }
-
 
     /*박스엘아이 안 상품이름*/
     .productli-Font {
@@ -109,9 +93,7 @@
       font-size: 16px;
       color: black;
       font-weight: 450;
-
     }
-
 
     /*박스엘아이 안 상품가격*/
     .productli-Price {
@@ -128,14 +110,12 @@
       line-height: 30px;
       background-color: #545454;
       opacity: 0;
-
     }
 
     /*박스엘아이 안 상품가격 중 p속성전체 */
     .productli-Price p {
       font-size: 16px;
       font-weight: 500px;
-
     }
 
     /*박스엘아이 안 기본이미지*/
@@ -162,14 +142,11 @@
     .productli-life:hover .img-hover {
       opacity: 1;
       transform: scale(1.2);
-
-
     }
 
     /*마우스가 올라가면 기본 이미지 흐리기*/
     .productli-life:hover .img-basic {
       opacity: 0;
-
     }
 
 
@@ -204,6 +181,77 @@
 
 <body onload="init()">
   <script src="./index.js"></script>
+
+  <!-- 오버레이 -->
+  <div class="overlay-login"></div>
+  <div class="overlay-shopping"></div>
+
+  <!-- 로그인 슬라이드 -->
+  <div class="login-popup">
+    <button class="close-btn" onclick="closeLogin()">닫기x</button>
+    <div class="login-page">
+      <div class="login-section">
+        <h1 class="login">
+          로그인 <br>
+          <span>블루보틀 온라인 스토어의 다양한 혜택을 만나보세요</span>
+        </h1>
+        <div class="login-forn">
+          <form action="">
+            <div class="email">
+              <input type="text" placeholder="이메일 주소 *">
+            </div>
+            <div class="password">
+              <input type="password" placeholder="비밀번호 *">
+            </div>
+            <a href="" class="forgetPw">비밀번호를 잊으셨나요?</a>
+            <button class="login-btn">로그인</button>
+            <button class="join-btn">회원 가입</button>
+          </form>
+        </div>
+        <div class="snsbutton-wrap">
+          <a href="">
+            <img src="./img/naver.png" alt="" class="sns-btn">
+          </a>
+          <a href="">
+            <img src="./img/kakaotalk.png" alt="" class="sns-btn">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 쇼핑 슬라이드 -->
+  <div class="shopping-slide">
+    <button class="close-btn2" onclick="closeShopping()">X</button>
+    <div>
+      <ul>
+        <li>
+            <a href="#" onclick="openDetailCategory('coffee'); return false;">커피</a>
+        </li>
+        <li>
+            <a href="#" onclick="openDetailCategory('tumbler'); return false;">컵과 텀블러</a>
+        </li>
+        <li>
+            <a href="#" onclick="openDetailCategory('brewing'); return false;">브루잉 도구</a>
+        </li>
+        <li>
+            <a href="/블루보틀_라이프스타일.html" onclick="openDetailCategory('lifestyle'); return false;">라이프 스타일</a>
+        </li>
+    </ul>
+    </div>
+  </div>
+
+  <!-- 쇼핑 세부 카테고리 슬라이드 -->
+  <div class="detail-slide">
+    <button class="back-btn" onclick="closeDetailSlide()">←</button>
+    <button class="close-btn3" onclick="closeShopping()">X</button>
+    <h3 id="detail-title">카테고리</h3>
+    <div>
+        <ul id="detail-list">
+            <!-- 동적으로 생성될 세부 항목들 -->
+        </ul>
+    </div>
+</div>
 
   <!-- 택스트 슬라이드 -->
   <div class="text-slide-container">
@@ -251,6 +299,7 @@
       </span>
     </div>
   </header>
+  
   <!--메인이미지-->
   <div class="mainimagetag">
 

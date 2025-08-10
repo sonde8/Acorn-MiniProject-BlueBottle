@@ -193,10 +193,83 @@
 <body onload="init()">
   <script src="./index.js"></script>
 
+  <!-- 오버레이 -->
+  <div class="overlay-login"></div>
+  <div class="overlay-shopping"></div>
+
+  <!-- 로그인 슬라이드 -->
+  <div class="login-popup">
+    <button class="close-btn" onclick="closeLogin()">닫기x</button>
+    <div class="login-page">
+      <div class="login-section">
+        <h1 class="login">
+          로그인 <br>
+          <span>블루보틀 온라인 스토어의 다양한 혜택을 만나보세요</span>
+        </h1>
+        <div class="login-forn">
+          <form action="">
+            <div class="email">
+              <input type="text" placeholder="이메일 주소 *">
+            </div>
+            <div class="password">
+              <input type="password" placeholder="비밀번호 *">
+            </div>
+            <a href="" class="forgetPw">비밀번호를 잊으셨나요?</a>
+            <button class="login-btn">로그인</button>
+            <button class="join-btn">회원 가입</button>
+          </form>
+        </div>
+        <div class="snsbutton-wrap">
+          <a href="">
+            <img src="./img/naver.png" alt="" class="sns-btn">
+          </a>
+          <a href="">
+            <img src="./img/kakaotalk.png" alt="" class="sns-btn">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 쇼핑 슬라이드 -->
+  <div class="shopping-slide">
+    <button class="close-btn2" onclick="closeShopping()">X</button>
+    <div>
+      <ul>
+        <li>
+          <a href="#" onclick="openDetailCategory('coffee'); return false;">커피</a>
+        </li>
+        <li>
+          <a href="#" onclick="openDetailCategory('tumbler'); return false;">컵과 텀블러</a>
+        </li>
+        <li>
+          <a href="#" onclick="openDetailCategory('brewing'); return false;">브루잉 도구</a>
+        </li>
+        <li>
+          <a href="/블루보틀_라이프스타일.html" onclick="openDetailCategory('lifestyle'); return false;">라이프 스타일</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 쇼핑 세부 카테고리 슬라이드 -->
+  <div class="detail-slide">
+    <button class="back-btn" onclick="closeDetailSlide()">←</button>
+    <button class="close-btn3" onclick="closeShopping()">X</button>
+    <h3 id="detail-title">카테고리</h3>
+    <div>
+      <ul id="detail-list">
+        <!-- 동적으로 생성될 세부 항목들 -->
+      </ul>
+    </div>
+  </div>
+
+  <!-- 택스트 슬라이드 -->
   <div class="text-slide-container">
     <div class="text-slide"></div>
   </div>
 
+  <!-- 헤더 -->
   <header>
     <!-- 메뉴 -->
     <div>
@@ -237,6 +310,7 @@
       </span>
     </div>
   </header>
+
   <!--메인이미지-->
   <div class="mainimagetag">
     <img

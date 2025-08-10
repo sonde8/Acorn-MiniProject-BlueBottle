@@ -5,13 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="./index.css">
 
 
   <style>
     /* 폰트 설정 */
     @import url('//fonts.googleapis.com/earlyaccess/notosanskr.css');
-
-
 
     html,
     body {
@@ -45,22 +44,6 @@
       height: 30px;
       line-height: 30px;
       max-width: 100%;
-    }
-
-    header {
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: #FDFBF7;
-      z-index: 1000;
-    }
-
-    .header-inner {
-      height: 80px;
-      padding: 0 60px;
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
     }
 
     /* 상단 5개 메뉴  */
@@ -175,12 +158,10 @@
       transition: 0.s;
       opacity: 0;
       overflow: hidden;
-
     }
 
     .hidden-box img:hover {
       transform: scale(1.03);
-
     }
 
     .hidden-box img {
@@ -206,7 +187,6 @@
     .hidden-text2 {
       width: 100%;
       height: 30%;
-      /*border: 1px solid black;*/
       position: absolute;
       left: 0;
       bottom: 0;
@@ -415,61 +395,235 @@
 
       setInterval(next, 5000);
     }
+
+    // 로그인 창 나오게 하는 함수
+    function loginPopUp() {
+      const loginPopup = document.querySelector(".login-popup");
+      const overlay = document.querySelector(".overlay-login");
+
+      loginPopup.classList.add("active"); // 클래스명만, 변수명 통일
+      overlay.classList.add("active")
+    }
+
+    // 로그인 창 들어가게 하는 함수
+    function closeLogin() {
+      const loginPopup = document.querySelector(".login-popup");
+      const overlay = document.querySelector(".overlay-login");
+
+      loginPopup.classList.remove("active"); // 클래스명만, 변수명 통일
+      overlay.classList.remove("active")
+    };
+
+    // 쇼핑 창 나오게 하는 함수
+    function shoppingPopup() {
+      const shoppingSlide = document.querySelector(".shopping-slide");
+      const overlay = document.querySelector(".overlay-shopping");
+
+      shoppingSlide.classList.add("active");
+      overlay.classList.add("active");
+      document.body.classList.add("no-scroll");
+    }
+
+    // 쇼핑 창 들어가게 하는 함수
+    function closeShopping() {
+      const shoppingSlide = document.querySelector(".shopping-slide");
+      const overlay = document.querySelector(".overlay-shopping");
+      const detailSlide = document.querySelector(".detail-slide");
+
+      shoppingSlide.classList.remove("active");
+      overlay.classList.remove("active");
+      detailSlide.classList.remove("active");
+      document.body.classList.remove("no-scroll");
+    }
+
+    // 쇼핑 세부 카테고리 
+    const categoryData = {
+      coffee: {
+        title: '커피',
+        items: [
+          { name: '모든 커피', link: '/블루보틀커피_ALL커피모음.html' },
+          { name: '블렌드', link: '/블루보틀커피_블렌드.html' },
+          { name: '싱글 오리진', link: '/블루보틀커피_싱글오리진.html' },
+          { name: '인스턴트', link: '/블루보틀커피_인스턴트.html' },
+          { name: '콜드브루', link: '/블루보틀커피_콜드브루.html' },
+          { name: '휴먼 메이드', link: '/블루보틀커피_휴먼메이드.html' },
+          { name: '세트', link: '/블루보틀커피_세트.html' }
+        ]
+      },
+      tumbler: {
+        title: '컵과 텀블러',
+        items: [
+          { name: '모든 컵과 텀블러', link: '/블루보틀_ALL컵모음.html' },
+          { name: '텀블러', link: '/블루보틀_텀블러.html' },
+          { name: '컵과 머그', link: '/블루보틀_컵과머그.html' },
+          { name: '유리잔', link: '/블루보틀_유리잔.html' }
+        ]
+      },
+      brewing: {
+        title: '브루잉 도구',
+        items: [
+          { name: '모든 브루잉 도구', link: '/블루보틀브루밍도구_ALL도구모음.html' },
+          { name: '브루잉 도구', link: '/블루보틀브루밍도구_브루잉도구.html' },
+          { name: '액세서리', link: '/블루보틀루밍도구_브루잉액세서리.html' },
+          { name: '필터', link: '/블루보틀브루밍도구_커피핕터.html' },
+          { name: '그라인더', link: '/블루보틀브루밍도구_그라인더.html' }
+        ]
+      }
+    };
+
+    // 세부 카테고리 열기
+    function openDetailCategory(category) {
+      const detailSlide = document.querySelector(".detail-slide");
+      const detailTitle = document.getElementById("detail-title");
+      const detailList = document.getElementById("detail-list");
+
+      // 카테고리 데이터 가져오기
+      const data = categoryData[category];
+
+      // 제목 설정
+      detailTitle.textContent = data.title;
+
+      // 리스트 항목 생성
+      detailList.innerHTML = '';
+      data.items.forEach(item => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.textContent = item.name;
+        a.href = item.link; // 실제 링크 설정
+
+        li.appendChild(a);
+        detailList.appendChild(li);
+      });
+
+      // 세부 슬라이드 열기
+      detailSlide.classList.add("active");
+    }
+
+    // 세부 카테고리 닫기 (뒤로가기)
+    function closeDetailSlide() {
+      const detailSlide = document.querySelector(".detail-slide");
+      detailSlide.classList.remove("active");
+    }
   </script>
 </head>
 
 <body onload="init()">
+  <!-- 오버레이 -->
+  <div class="overlay-login"></div>
+  <div class="overlay-shopping"></div>
+
+  <!-- 로그인 슬라이드 -->
+  <div class="login-popup">
+    <button class="close-btn" onclick="closeLogin()">닫기x</button>
+    <div class="login-page">
+      <div class="login-section">
+        <h1 class="login">
+          로그인 <br>
+          <span>블루보틀 온라인 스토어의 다양한 혜택을 만나보세요</span>
+        </h1>
+        <div class="login-forn">
+          <form action="">
+            <div class="email">
+              <input type="text" placeholder="이메일 주소 *">
+            </div>
+            <div class="password">
+              <input type="password" placeholder="비밀번호 *">
+            </div>
+            <a href="" class="forgetPw">비밀번호를 잊으셨나요?</a>
+            <button class="login-btn">로그인</button>
+            <button class="join-btn">회원 가입</button>
+          </form>
+        </div>
+        <div class="snsbutton-wrap">
+          <a href="">
+            <img src="./img/naver.png" alt="" class="sns-btn">
+          </a>
+          <a href="">
+            <img src="./img/kakaotalk.png" alt="" class="sns-btn">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 쇼핑 슬라이드 -->
+  <div class="shopping-slide">
+    <button class="close-btn2" onclick="closeShopping()">X</button>
+    <div>
+      <ul>
+        <li>
+          <a href="#" onclick="openDetailCategory('coffee'); return false;">커피</a>
+        </li>
+        <li>
+          <a href="#" onclick="openDetailCategory('tumbler'); return false;">컵과 텀블러</a>
+        </li>
+        <li>
+          <a href="#" onclick="openDetailCategory('brewing'); return false;">브루잉 도구</a>
+        </li>
+        <li>
+          <a href="/블루보틀_라이프스타일.html" onclick="openDetailCategory('lifestyle'); return false;">라이프 스타일</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 쇼핑 세부 카테고리 슬라이드 -->
+  <div class="detail-slide">
+    <button class="back-btn" onclick="closeDetailSlide()">←</button>
+    <button class="close-btn3" onclick="closeShopping()">X</button>
+    <h3 id="detail-title">카테고리</h3>
+    <div>
+      <ul id="detail-list">
+        <!-- 동적으로 생성될 세부 항목들 -->
+      </ul>
+    </div>
+  </div>
+
   <!-- 택스트 슬라이드 -->
   <div class="text-slide-container">
     <div class="text-slide"></div>
   </div>
-  <!-- <div class="text-slide"> -->
-
-  </div>
 
   <!-- 헤더 -->
-  <header class="nav-down">
-    <div class="header-inner">
-      <div>
-        <ul class="list-menu">
-          <li onclick="shoppingPopup()">쇼핑</li>
-          <li>
-            <a href="./베스트셀러.html">베스트셀러</a>
-          </li>
-          <li>
-            <a href="./놀라.html">NOLA</a>
-          </li>
-          <li>
-            <a href="./카페.html">카페</a>
-          </li>
-          <li>
-            <a href="./블로그.html">블로그</a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- 로고 -->
-      <div>
-        <a href="/index.html">
-          <img src="./img/logo.png" alt="" class="logo">
-        </a>
-      </div>
-
-      <!-- 검색,회원,장바구니 -->
-      <div class="header-icon">
-        <span>
-          <img src="./img/search1.png" alt="">
-        </span>
-        <span>
-          <img src="./img/user1.png" alt="" onclick="loginPopUp()">
-        </span>
-        <span>
-          <img src="./img/basket1.png" alt="">
-        </span>
-      </div>
-    </div>
+  <header>
     <!-- 메뉴 -->
+    <div>
+      <ul class="list-menu">
+        <li onclick="shoppingPopup()">쇼핑</li>
+        <li>
+          <a href="./베스트셀러.html">베스트셀러</a>
+        </li>
+        <li>
+          <a href="./놀라.html">NOLA</a>
+        </li>
+        <li>
+          <a href="./카페.html">카페</a>
+        </li>
+        <li>
+          <a href="./블로그.html">블로그</a>
+        </li>
+      </ul>
+    </div>
 
+    <!-- 로고 -->
+    <div>
+      <a href="/index.html">
+        <img src="./img/logo.png" alt="" class="logo">
+      </a>
+    </div>
+
+    <!-- 검색,회원,장바구니 -->
+    <div class="header-icon">
+      <span>
+        <img src="./img/search1.png" alt="">
+      </span>
+      <span>
+        <img src="./img/user1.png" alt="" onclick="loginPopUp()">
+      </span>
+      <span>
+        <img src="./img/basket1.png" alt="">
+      </span>
+    </div>
   </header>
 
   <!--이미지영역-->
@@ -487,8 +641,7 @@
       <ul class="product-wrap">
         <!--첫번째 줄-->
         <li class="product-box">
-          <a
-            href="http://127.0.0.1:5500/%ED%94%84%EB%A1%A0%ED%8A%B8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_%EC%9D%B4%EB%8F%99%EA%B7%9C/%ED%99%94%EC%9D%B4%ED%8A%B8%EB%AA%A8%EC%B9%B4%EA%B0%95%EB%83%89%EC%9D%B4%EC%A3%BC%EB%AC%B8%EC%B0%BD.html">
+          <a href="./화이트모카강냉이주문창.html">
             <!--상품이미지-->
             <div class="img-box">
               <img src="img이동규/화이트모카강냉이.webp">
@@ -511,8 +664,7 @@
         </li>
 
         <li class="product-box">
-          <a
-            href="http://127.0.0.1:5500/%ED%94%84%EB%A1%A0%ED%8A%B8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_%EC%9D%B4%EB%8F%99%EA%B7%9C/%EC%9B%8C%ED%81%AC%EC%95%84%EC%9B%83%EB%B3%B4%ED%8B%80%20%EC%A3%BC%EB%AC%B8%EC%B0%BD.html">
+          <a href="./워크아웃보틀 주문창.html">
             <!--상품 이미지-->
             <div class="img-box">
               <img src="img이동규/워크아웃보틀.webp">
@@ -537,8 +689,7 @@
         </li>
 
         <li class="product-box">
-          <a
-            href="http://127.0.0.1:5500/%ED%94%84%EB%A1%A0%ED%8A%B8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_%EC%9D%B4%EB%8F%99%EA%B7%9C/%EA%B3%A0%EB%B8%94%EB%A6%BF%EA%B8%80%EB%9D%BC%EC%8A%A4%EC%A3%BC%EB%AC%B8%EC%B0%BD.html">
+          <a href="./고블릿글라스주문창.html">
             <!--상품이미지-->
             <div class="img-box">
               <img src="img이동규/고블릿글라스.webp">
