@@ -12,8 +12,6 @@
 
     body {
       font-family: 'Noto Sans KR', sans-serif;
-      margin: 0;
-      background-color: #FDFBF7;
     }
 
     .text-slide-container {
@@ -56,11 +54,6 @@
       padding: 0;
     }
 
-    .list-menu li a {
-      text-decoration: none;
-      color: black;
-    }
-
     /* 상단 3개 아이콘 */
     .header-icon {
       display: flex;
@@ -89,48 +82,25 @@
     }
 
     header css .wrap {
+      border: 1px solid black;
       background-color: #fcfbf7;
+      color: #4b4b4b;
     }
 
-    .menu {
-      padding: 0px 60px;
-      background-color: #fcfbf7;
-    }
-
-    .menu-w {
-      list-style: none;
-      display: flex;
+    .wap {
       text-align: center;
-      justify-content: center;
-      margin-top: 10px;
-      padding: 0;
+      background-color: #fcfbf7;
+      padding: 70px 0px;
     }
 
-    .menu-w1 {
-      width: 70px;
-      margin: 0px 20px;
-    }
-
-    .menu-w1 a {
-      text-decoration: none;
-      color: black;
-    }
-
-    .main {
-      padding: 50px 60px;
-      justify-items: center;
+    .wp {
       text-align: center;
-      font-size: 20px;
+      padding: 20px 0px;
       background-color: #fcfbf7;
     }
 
-    .main1 img {
-      width: 900px;
-    }
-
-    .main1 a {
-      font-size: 13px;
-      color: black;
+    .wp img {
+      width: 55%;
     }
 
     footer {
@@ -293,18 +263,18 @@
     <div>
       <ul>
         <li>
-            <a href="#" onclick="openDetailCategory('coffee'); return false;">커피</a>
+          <a href="#" onclick="openDetailCategory('coffee'); return false;">커피</a>
         </li>
         <li>
-            <a href="#" onclick="openDetailCategory('tumbler'); return false;">컵과 텀블러</a>
+          <a href="#" onclick="openDetailCategory('tumbler'); return false;">컵과 텀블러</a>
         </li>
         <li>
-            <a href="#" onclick="openDetailCategory('brewing'); return false;">브루잉 도구</a>
+          <a href="#" onclick="openDetailCategory('brewing'); return false;">브루잉 도구</a>
         </li>
         <li>
-            <a href="/LifeStyle.html" onclick="openDetailCategory('lifestyle'); return false;">라이프 스타일</a>
+          <a href="/LifeStyle.html" onclick="openDetailCategory('lifestyle'); return false;">라이프 스타일</a>
         </li>
-    </ul>
+      </ul>
     </div>
   </div>
 
@@ -314,11 +284,11 @@
     <button class="close-btn3" onclick="closeShopping()">X</button>
     <h3 id="detail-title">카테고리</h3>
     <div>
-        <ul id="detail-list">
-            <!-- 동적으로 생성될 세부 항목들 -->
-        </ul>
+      <ul id="detail-list">
+        <!-- 동적으로 생성될 세부 항목들 -->
+      </ul>
     </div>
-</div>
+  </div>
 
   <!-- 택스트 슬라이드 -->
   <div class="text-slide-container">
@@ -367,120 +337,169 @@
     </div>
   </header>
 
+  <!--header 제외한 전체 영역-->
   <div class="wrap">
 
-    <!--네 개의 메뉴창-->
-    <div class="menu">
+    <!--header 밑 글씨 부분-->
+    <div class="wap">
 
-      <ul class="menu-w">
+      <h2 style="margin: 0 auto;"> 주전자에 관하여 </h2>
+      <h4> 더 좋은 커피를 내리는 방법</h4>
+      <h6 style="margin: 0 auto;"> 블루보틀 커피 코리아</h6>
 
-        <li class="menu-w1">
-          <a href="./BlogBrewing.html">브루잉</a>
-        </li>
-        <li class="menu-w1">
-          <a href="./BlogTasting.html">테이스팅</a>
-        </li>
-        <li class="menu-w1">
-          <a href="./BlogCoffeeSourcing.html">커피 소싱</a>
-        </li>
-        <li class="menu-w1">
-          <a href="./BlogNews.html">뉴스</a>
-        </li>
-      </ul>
     </div>
 
-    <!--header 밑 첫번째 영역-->
-    <div class="main">
-      <div class="main1">
-        <a href="./BbNolaPopUp.html">
-          <img
-          src="https://kr.bluebottlecoffee.com/cdn/shop/files/Blog_PC_00d682c2-b317-4792-b30f-e7c4fab3a96f.jpg?v=1753947913&width=1680"
-          alt="서울역">
-        </a>
-        <p> 블루보틀 서울역 놀라 팝업 오픈</p>
-        <a href="./BbNolaPopUp.html"> 자세히 보기
-        </a>
-      </div>
+    <!--첫번째 사진-->
+    <div class="wp">
+
+      <img src="https://kr.bluebottlecoffee.com/cdn/shop/articles/itzpomhf8de0xysoah0w.jpg?v=1722498958&width=2520"
+        alt="이미지">
     </div>
 
-    <!--header 밑 두번째 영역-->
-    <div class="main">
-      <div class="main1">
-        <a href="./BbStudioSeoul.html">
-          <img src="https://kr.bluebottlecoffee.com/cdn/shop/files/Blog_PC.jpg?v=1748234604&width=1680" alt="스튜디오">
-        </a>
-        <p> 블루보틀 스튜디오 서울 </p>
-        <a href="./BbStudioSeoul.html">
-          자세히 보기
-        </a>
-      </div>
+    <!--첫번째 사진 밑 글-->
+    <div class="wp">
+
+      <p> 구스넥 커피 주전자라고도 부르는 스완 넥 커피 주전자를 사용하면 물 붓는 속도를 조절할 수 있어 <br>
+        더 맛있는 커피를 만들 수 있습니다. 10초 당 100g의 물을 부어야 하는데, 스완 넥 주전자가 도움이 <br>
+        될 거예요.
+      </p> <br>
+
+      <p> 블루보틀의 창립자인 제임스 프리먼은 그의 책 『블루보틀 크래프트 오브 커피(The Blue Bottle <br>
+        Craft of Coffee)』에서 스완 넥 커피 주전자가 푸어 오버 커피를 만드는 데 있어 필수 도구라고 <br>
+        했습니다.
+      </p> <br>
+
+      <p> "스완 넥 주전자를 사용하면 물 붓기의 정확성을 높이고 추출의 일관성을 향상시킬 수 있습니다. <br>
+        주전자를 사는 데 50달러를 지불하는 행위가 쉽게 동의 되지 않을 수도 있습니다. 하지만 사용도 안 <br>
+        하는 피자 스톤이나 부엌 찬장 구석에 자리만 차지하고 있는 아이스크림 제조기를 구매하시는 <br>
+        분들이 얼마나 많은 지 아세요? 그램 저울과 주전자는 매일 사용할 수 있을뿐더러 구매 즉시 더 <br>
+        맛있는 커피를 마실 수 있습니다."
+      </p> <br>
+
+      <p> -블루보틀 창립자 제임스 프리먼- </p>
     </div>
 
-    <!--header 밑 세번째 영역-->
-    <div class="main">
-      <div class="main1">
-        <a href="./BbGijang.html">
-          <img src="https://kr.bluebottlecoffee.com/cdn/shop/files/BG_Blog_PC.jpg?v=1746162015&width=1680" alt="기장">
-        </a>
-        <p> 블루보틀 부산 기장 카페 오픈 </p>
-        <a href="./BbGijang.html"> 자세히 보기
-        </a>
-      </div>
+    <!--두번째 사진-->
+    <div class="wp">
+
+      <img src="https://kr.bluebottlecoffee.com/cdn/shop/files/qbkcrk5aa1qtrixkddwa.jpg?v=1722499465&width=2520"
+        alt="이미지">
+
     </div>
 
-    <!--header 밑 네번째 영역-->
-    <div class="main">
-      <div class="main1">
-        <a href="./BbMarimekko.html">
-          <img
-          src="https://kr.bluebottlecoffee.com/cdn/shop/articles/Blog_PC_250408_Marimekko_c90bc6ea-cf0c-47c4-b39a-4e907a5b0b1e.jpg?v=1744694347&width=1680"
-          alt="콜라보">
-        </a>
-        <p> 마리메꼬 x 블루보틀 커피 콜라보레이션 </p>
-        <a href="./BbMarimekko.html"> 자세히 보기
-        </a>
-      </div>
+    <!--두번째 사진 밑 글-->
+    <div class="wp">
+
+      <h3> 디자인의 중요성</h3>
+
+      <p> 물론 다른 주전자를 사용할 수도 있지만, 커피를 내릴 때는 스완 넥 주전자가 이상적입니다.</p>
+
+      <p> 많은 분들이 "구스넥(gooseneck) 커피 주전자"라는 용어를 사용하지만, 우리는 우아한 스파우트의 <br>
+        휘어진 S자 모양이 백조의 목에 더 가깝다고 생각해 스완 넥 주전자라고 불러요. 뭐라고 부르든 <br>
+        상관없이 이런 모양의 주전자를 사용하게 되면 물의 양을 제어하기 쉽습니다. 물이 흘러나오는 <br>
+        부분이 매우 가늘기 때문에 물을 원하는 속도로 부드럽게 부을 수 있기 때문이죠.
+      </p>
+
+      <p> 이 주전자의 모양이 아름답다는 건 보너스 중 하나입니다. </p>
     </div>
 
-    <!--header 밑 다섯번째 영역-->
-    <div class="main">
-      <div class="main1">
-        <a href="./BbEspresso.html">
-          <img
-          src="https://kr.bluebottlecoffee.com/cdn/shop/files/D2C_Blog_news_First_Espresso_7-2220x1232.jpg?v=1741756218&width=1680"
-          alt="스토리">
-        </a>
-        <p> 블루보틀 에스프레소 스토리 </p>
-        <a href="./BbEspresso.html">
-          자세히 보기 </a>
-      </div>
+    <div class="wp">
+
+      <h3> 물을 붓는 속도가 중요한 이유</h3>
+
+      <p> 커피를 만들 때 물을 붓는 속도는 주요한 변수입니다. 추출은 커피를 브루잉하는 중 발생하죠. <br>
+        그리고 그 과정에서 커피 맛을 내도록 물을 사용합니다. 좀 더 기술적으로 말해 추출은 커피에서 <br>
+        용해될 수 있는 성분을 분리하는 것으로 추출 시간에 따라 용해되는 성분의 비율이 달라져요. 성분의 <br>
+        비율은 시간, 온도 그리고 분쇄된 커피 대 물의 비율에도 영향을 받습니다.
+      </p> <br>
+
+      <p> 스완 넥 주전자는 일정 시간 동안 커피와 만나는 물의 양을 조절하는 데 좋아요. 가는 스파우트를 <br>
+        통해 동심원을 그리며 물을 흘리면 분쇄된 커피를 골고루 정확하게 흠뻑 적실 수 있습니다. 물이 <br>
+        나오는 속도를 제어해 일정하게 부으면 커피를 균일하게 추출할 수 있어 더 뚜렷하고 균형 잡힌 맛을 <br>
+        가진 커피를 내릴 수 있어요.
+      </p> <br>
+
+      <p> 물을 너무 많이 부으면 커피가 지나치게 추출되어 자연스럽게 단맛이 아닌 쓴맛이 납니다. 마찬가지 <br>
+        이유로 너무 천천히 부으면 커피가 과소 추출되어 신맛이 나기도 하죠. 블루보틀에서는 완벽하게 <br>
+        균형 잡힌 추출을 스위트 스팟이라고 부르는데 스완 넥 주전자를 사용하여 물이 나오는 속도를 <br>
+        제어하는 것도 스위트 스팟을 달성하기 위한 방법의 일부입니다
+      </p> <br>
+
+      <p> 커피를 만들 때 이상적인 물 붓기 속도는 어느 정도일까요? 우리가 생각하는 일반적인 규칙은 <br>
+        10초에 물 100g을 붓는 것입니다.
+      </p>
     </div>
 
-    <!--header 밑 여섯번째 영역-->
-    <div class="main">
-      <div class="main1">
-        <a href="./BbMinrak.html">
-          <img
-          src="https://kr.bluebottlecoffee.com/cdn/shop/files/web_cafe_BM_PC_2220x1232_101824_1.jpg?v=1731629169&width=1680"
-          alt="민락">
-        </a>
-        <p> 블루보틀 부산 민락 카페 </p>
-        <a href="./BbMinrak.html"> 자세히 보기 </a>
-      </div>
+    <div class="wp">
+
+      <h3> 분쇄의 중요성 </h3>
+
+      <p> 고려해야 할 또 다른 변수는 분쇄입니다. 커피를 미세하게 분쇄하면 붓는 속도와 관계없이 커피가 <br>
+        느리게 추출됩니다. 주전자에서 흘러나온 물이 커피 사이를 느리게 흘러나오기 때문이죠. 커피를 <br>
+        너무 굵게 갈면 물이 최고의 맛을 지닌 화합물을 빠르게 지나쳐 흐르면서 달콤하거나 화사한 맛이 <br>
+        부분이 매우 가늘기 때문에 물을 원하는 속도로 부드럽게 부을 수 있기 때문이죠.
+      </p>
+
+      <p> 아닌 신맛만 나는 커피가 됩니다. </p>
     </div>
 
-    <!--header 밑 일곱번째 영역-->
-    <div class="main">
-      <div class="main1">
-        <a href="./BbExtraction.html">
-          <img
-          src="https://kr.bluebottlecoffee.com/cdn/shop/files/brew_theory_and_coffee_strength_and_extraction.jpg?v=1721623414&width=1680"
-          alt="이론">
-        </a>
-        <p> 브루잉 이론 : 추출, 강도 및 푸어 오버의 적합한 위치 찾기 </p>
-        <a href="./BbExtraction.html"> 자세히 보기 </a>
-      </div>
+    <div class="wp">
+
+      <p> 스완 넥 커피 주전자를 사용해 최적의 물 붓기 속도를 익히는 것은 완벽한 푸어 오버를 만드는 <br>
+        첫걸음에 불과합니다. 다음 단계가 커피를 제대로 분쇄하는 것입니다.
+      </p>
+
     </div>
+
+    <!--세번째 사진-->
+    <div class="wp">
+
+      <img src="https://kr.bluebottlecoffee.com/cdn/shop/files/xlpsiffniymdirsli2cz.jpg?v=1722499642&width=2520"
+        alt="이미지">
+
+    </div>
+
+    <div class="wp">
+
+      <h3> 스완 넥 주전자 사용 요령</h3>
+
+      <p> 물 붓는 속도 연습하기: 처음 시작할 때는 빈 드리퍼에 정확히 10초에 100g의 맹물을 붓는 연습을 <br>
+        하는 것이 좋습니다. 이 연습을 통해 물이 흐르는 방식을 느낄 수 있습니다.
+      </p> <br>
+
+      <p> 팔꿈치 밀어 넣기: 팔과 어깨 사이의 각도가 넓게 주전자를 잡는 것보다는 팔꿈치를 옆으로 바짝 <br>
+        붙여서 물을 부어주세요. 인체공학적인 면에서 팔꿈치를 집어넣으면 주전자의 무게 중심을 이동시켜 <br>
+        추출을 더 균일하게 할 수 있게 되므로 어깨와 팔이 편안해지는 것을 곧바로 느낄 것입니다. <br>
+        이 자세는 추출에도 좋고 여러분의 몸에도 좋습니다.
+      </p> <br>
+
+      <p> 알맞은 높이에서 물 붓기: 커피가 있는 바닥에서 스파우트까지 20~25cm정도 떨어진 높이에서 물을 <br>
+        부어주세요. 너무 높은 곳에서 물을 부으면 불안정할 수 있고, 너무 낮추면 드리퍼에 부딪힐 수 <br>
+        있습니다. 스파우트를 일정한 높이로 유지하면 추출을 고르게 할 수 있습니다.
+      </p> <br>
+
+      <p> 항상 시계 방향으로 물 붓기: 일본 우에시마 커피 회사 아카데미(Ueshima Coffee Co. Academy) <br>
+        에 따르면 올바른 붓기 방향은 항상 시계 방향이라고 합니다. 이 규칙은 여러분의 부엌에서는 <br>
+        유연하게 적용하셔도 됩니다.
+      </p> <br>
+
+      <p> 몸으로 체크하기: 가장 중요하게 고려해야 할 사항은 얼마나 편안한가입니다. 체중을 고르게 <br>
+        분산시켜 정확하게 물을 부어야 합니다. 자세가 편하지 않다면 테크닉을 약간 사용해도 좋아요.
+      </p> <br>
+
+      <p> 수위 기억하기: 주전자에 담긴 물의 양이 물 붓는 속도에 영향을 준다는 것을 기억하세요. </p><br>
+
+      <p> 작은 변화로부터 큰 성과 기대하기: 다른 모든 변수가 동일하게 유지되는 상태에서 단순히 테크닉만<br>
+        바뀌더라도 커피 맛에 큰 영향을 미칠 수 있습니다.
+      </p> <br>
+
+      <p> 반대편 손 처리하기: 많은 바리스타들은 물을 부을 때 다른 쪽 손을 등 뒤에 둡니다. 다른 선택지: <br>
+        물을 붓지 않는 손으로 주전자 아랫부분을 수건으로 감싸 받쳐줍니다. 이 동작으로 균형을 잘 잡을 <br>
+        수 있으며 물의 양도 맞추기 쉽습니다. 팔꿈치를 집어넣으면 통제력이 올라갑니다.
+      </p>
+    </div>
+
+
 
     <footer>
       <div class="footer-wrap">
@@ -593,9 +612,6 @@
     </footer>
 
   </div>
-
-
-
 </body>
 
 </html>
