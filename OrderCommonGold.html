@@ -7,11 +7,10 @@
   <title>주문창</title>
   <link rel="stylesheet" href="./index.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
   <style>
     /* 폰트 설정 */
     @import url('//fonts.googleapis.com/earlyaccess/notosanskr.css');
-
-
 
     html,
     body {
@@ -23,20 +22,15 @@
       font-family: 'Noto Sans KR', sans-serif;
       margin: 0;
       background-color: #FDFBF7;
-      /* padding-top: 80px; */
     }
 
     /* 상단 부분 */
-
     .text-slide-container {
       overflow: hidden;
       position: relative;
-      /* 이것도 중요 */
       width: 100%;
-      /* 명확한 너비 지정 */
       z-index: 1001;
       background-color: white;
-
     }
 
     .text-slide {
@@ -105,7 +99,6 @@
     .middle-wrap {
       width: 1500px;
       height: 800px;
-      /*border: 1px solid black;*/
       display: flex;
       margin: 0 auto;
     }
@@ -114,7 +107,6 @@
     .img-wrap {
       width: 750px;
       height: 750px;
-      /*border: 1px solid black;*/
       box-sizing: border-box;
       position: relative;
     }
@@ -123,14 +115,10 @@
     .img-box {
       width: 100%;
       height: 95%;
-
-      background-image: url('./img이동규/커먼골드글라스2잔세트.webp');
+      background-image: url('./img이동규/커먼골드글라스2잔세트.webp');
       background-position: center;
       background-size: cover;
-      /*border: 1px solid black;*/
     }
-
-
 
     /*상품 이미지 크기조절*/
     .img-box img {
@@ -138,9 +126,6 @@
       height: 90%;
       padding: 30px;
     }
-
-    /*이미지 넘길 버튼영역*/
-
 
     .next-btn {
       width: 70px;
@@ -188,13 +173,11 @@
     .order-wrap {
       width: 750px;
       height: 750px;
-      /*border: 1px solid black;*/
     }
 
     /*상품정보*/
     .product {
       width: 400px;
-
       margin: 0 auto;
       margin-top: 200px;
       color: #545454;
@@ -203,14 +186,13 @@
     /*상품 이름 키우기*/
     .proP {
       font-size: 32px;
-      margin-top: -30px;
+      margin-top: -120px;
     }
 
     /*수량 선택 및 결제*/
     .product-order {
       width: 400px;
       height: 50px;
-      /*border: 1px solid black;*/
       margin: 0 auto;
       margin-top: 40px;
       display: flex;
@@ -241,8 +223,39 @@
       cursor: pointer;
     }
 
-    .login-popup {
-      /* fixed로 고정하고 top right 값을 조절해서 화면 밖으로 나가게 함 */
+    /* 오버레이 공통 스타일 */
+    .overlay-login {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      z-index: 1000;
+    }
+
+    .overlay-shopping {
+      /* 전체 화면을 덮는 설정 */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      /* 반투명 검은색 */
+      /* 처음엔 안 보이게 */
+      display: none;
+      z-index: 800;
+    }
+
+    .overlay-login.active,
+    .overlay-shopping.active {
+      display: block;
+    }
+
+    /* 카트 팝업 */
+    .cart-popup {
       position: fixed;
       top: 0;
       right: -1800px;
@@ -252,19 +265,11 @@
       transition: right 0.3s ease;
       background-color: #FDFBF7;
       z-index: 1001;
-      /* 오버레이보다 위에 */
     }
 
-    /* 여기 두 개가 중요함
-      클래스가 추가 되면서 active 클래스가 추가 되어서 위치가 원래대로 돌아옴
-    */
-    .login-popup.active {
+    .cart-popup.active {
       right: 0;
       background-color: #FDFBF7;
-    }
-
-    .overlay.active {
-      display: block;
     }
 
     .close-btn {
@@ -284,24 +289,10 @@
       padding: 0 112px;
     }
 
-    .overlay {
-      /* 전체 화면을 덮는 설정 */
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      /* 반투명 검은색 */
-      /* 처음엔 안 보이게 */
-      display: none;
-    }
-
     /*카트 영역*/
     .cart-wrap {
       width: 480px;
       height: 900px;
-      /*border: 1px solid black;*/
       margin-left: -30px;
       margin-top: -30px;
       color: #545454;
@@ -326,13 +317,11 @@
       border-radius: 40px;
       margin-top: 10px;
       color: #545454;
-
     }
 
     .cart-box3 {
       font-size: 10px;
       background-color: white;
-      /*margin-top: 30px;*/
       height: 70px;
       line-height: 29px;
     }
@@ -343,7 +332,6 @@
 
     .cart-box4 {
       height: 360px;
-      /*border: 1px solid black;*/
     }
 
     .cart-box4 ul {
@@ -359,8 +347,7 @@
     .img-list {
       width: 160px;
       height: 160px;
-      /*border: 1px solid black;*/
-      background-image: url('./img이동규/커먼골드글라스2잔세트.webp');
+      background-image: url('./img이동규/커먼골드글라스2잔세트.webp');
       background-position: center;
       background-size: cover;
     }
@@ -368,7 +355,6 @@
     .text-list {
       width: 190px;
       height: 160px;
-      /*border: 1px solid black;*/
       text-align: center;
       line-height: 170px;
     }
@@ -376,20 +362,17 @@
     .price-list {
       width: 100px;
       height: 160px;
-      /*border: 1px solid black;*/
       text-align: center;
       line-height: 170px;
     }
 
     .cart-box5 {
       height: 100px;
-      /*border: 1px solid black;*/
     }
 
     .price-box {
       width: 100%;
       height: 33.3%;
-      /*border: 1px solid black;*/
       box-sizing: border-box;
       display: flex;
     }
@@ -418,17 +401,14 @@
       font-size: 14px;
       font-weight: bold;
       cursor: pointer;
-
     }
 
     /*푸터영역*/
-    /* 푸터 부분 css 시작 */
     footer {
       height: 450px;
       padding: 80px 0 40px;
       background-color: #333333;
       color: white;
-
     }
 
     .footer-body {
@@ -535,21 +515,88 @@
       gap: 20px;
     }
   </style>
-
-
 </head>
 
 <body onload="init()">
+  <!-- <script src="./index.js"></script> -->
+
+  <div class="overlay-login"></div>
+  <div class="overlay-shopping"></div>
+
+  <!-- 로그인 슬라이드 -->
+  <div class="login-popup">
+    <button class="close-btn" onclick="closeLogin()">닫기x</button>
+    <div class="login-page">
+      <div class="login-section">
+        <h1 class="login">
+          로그인 <br>
+          <span>블루보틀 온라인 스토어의 다양한 혜택을 만나보세요</span>
+        </h1>
+        <div class="login-forn">
+          <form action="">
+            <div class="email">
+              <input type="text" placeholder="이메일 주소 *">
+            </div>
+            <div class="password">
+              <input type="password" placeholder="비밀번호 *">
+            </div>
+            <a href="" class="forgetPw">비밀번호를 잊으셨나요?</a>
+            <button class="login-btn">로그인</button>
+            <button class="join-btn">회원 가입</button>
+          </form>
+        </div>
+        <div class="snsbutton-wrap">
+          <a href="">
+            <img src="./img/naver.png" alt="" class="sns-btn">
+          </a>
+          <a href="">
+            <img src="./img/kakaotalk.png" alt="" class="sns-btn">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 쇼핑 슬라이드 -->
+  <div class="shopping-slide">
+    <button class="close-btn2" onclick="closeShopping()">X</button>
+    <div>
+      <ul>
+        <li>
+          <a href="#" onclick="openDetailCategory('coffee'); return false;">커피</a>
+        </li>
+        <li>
+          <a href="#" onclick="openDetailCategory('tumbler'); return false;">컵과 텀블러</a>
+        </li>
+        <li>
+          <a href="#" onclick="openDetailCategory('brewing'); return false;">브루잉 도구</a>
+        </li>
+        <li>
+          <a href="/LifeStyle.html" onclick="openDetailCategory('lifestyle'); return false;">라이프 스타일</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 쇼핑 세부 카테고리 슬라이드 -->
+  <div class="detail-slide">
+    <button class="back-btn" onclick="closeDetailSlide()">←</button>
+    <button class="close-btn3" onclick="closeShopping()">X</button>
+    <h3 id="detail-title">카테고리</h3>
+    <div>
+      <ul id="detail-list">
+        <!-- 동적으로 생성될 세부 항목들 -->
+      </ul>
+    </div>
+  </div>
+
   <!-- 택스트 슬라이드 -->
   <div class="text-slide-container">
     <div class="text-slide"></div>
   </div>
-  <!-- <div class="text-slide"> -->
-
-  </div>
 
   <!-- 헤더 -->
-  <header class="nav-down">
+  <header>
     <div>
       <ul class="list-menu">
         <li onclick="shoppingPopup()">쇼핑</li>
@@ -584,27 +631,23 @@
         <img src="./img/user1.png" alt="" onclick="loginPopUp()">
       </span>
       <span>
-        <img src="./img/basket1.png" alt="">
+        <img src="./img/basket1.png" alt="" onclick="cartPopUp()">
       </span>
     </div>
-    </div>
-    <!-- 메뉴 -->
-
   </header>
+
   <!--큰 틀-->
   <div class="big-wrap">
-    <!--카트 띄우기-->
-    <div class="overlay"></div>
 
-    <div class="login-popup">
-      <button class="close-btn" onclick="closeLogin()">닫기x</button>
+    <!-- 카트 슬라이드 -->
+    <div class="cart-popup">
+      <button class="close-btn" onclick="closeCart()">닫기x</button>
       <div class="login-page">
         <div class="cart-wrap">
           <div class="cart-box1">
             <p>카트</p>
           </div>
           <div class="cart-box2">
-            <!--<p>무료배송입니다.</p>-->
             <div class="row"></div>
           </div>
           <div class="cart-box3">
@@ -637,7 +680,6 @@
             </div>
           </div>
           <button class="pay-btn">결제</button>
-
         </div>
       </div>
     </div>
@@ -649,10 +691,7 @@
         <!--이미지 넘길 버튼-->
         <button class="next-btn" onclick="nextBtn()">→</button>
         <button class="prev-btn" onclick="prev()">←</button>
-        <div class="img-box">
-          <!-- <img src="./img/화이트모카강냉이.webp" alt="이미지">-->
-        </div>
-
+        <div class="img-box"></div>
       </div>
       <!--오더 영역-->
       <div class="order-wrap">
@@ -673,11 +712,12 @@
             <option>4</option>
             <option>5</option>
           </select>
-          <button class="order-btn" onclick="loginPopUp()">카트에 추가 &nbsp; | &nbsp;₩40,000</button>
+          <button class="order-btn" onclick="cartPopUp()">카트에 추가 &nbsp; | &nbsp;₩40,000</button>
         </div>
       </div>
     </div>
   </div>
+
   <!-- 풋터 -->
   <footer>
     <div class="footer-wrap">
@@ -789,7 +829,6 @@
     </div>
   </footer>
 
-
   <script>
     // 텍스트 슬라이드
     let text = [
@@ -810,7 +849,7 @@
 
       textSlide.animate(
         [
-          { transform: 'translateX(100%)', offset: 0 },  // 아래에서 시작
+          { transform: 'translateX(100%)', offset: 0 },
           { transform: 'translateX(0)', offset: 0.3 },
           { transform: 'translateX(0)', offset: 0.7 },
           { transform: 'translateX(-100%)', offset: 1 }
@@ -825,61 +864,67 @@
 
     function init() {
       document.querySelector(".text-slide").textContent = text[0]
-
       setInterval(next, 5000);
     }
 
-
     //이미지 넘기기
-
     let 화이트모카강냉이 = ["img이동규/커먼골드글라스2잔세트.webp", "img이동규/호버-커먼콜드글라스2잔세트.webp"];
 
     let index = 0;
     function nextBtn() {
-      // alert("djdjf");+
-      index++;  // index = index+1;
-      console.log("ffff");
-
-
-
+      index++;
       if (index >= 화이트모카강냉이.length) {
         index = 0;
       }
-
       const gallery = document.querySelector(".img-box");
       gallery.style.backgroundImage = "url(" + 화이트모카강냉이[index] + ")";
-      gallery.style.backgroundPosition = "center"
+      gallery.style.backgroundPosition = "center";
       gallery.style.backgroundSize = "cover";
     }
 
     function prev() {
-      // alert("djdjf");
-      index--;  // index = index+1;
-
+      index--;
       if (index < 0) {
         index = 화이트모카강냉이.length - 1;
       }
       const gallery = document.querySelector(".img-box");
       gallery.style.backgroundImage = "url(" + 화이트모카강냉이[index] + ")";
-      gallery.style.backgroundPosition = "center"
+      gallery.style.backgroundPosition = "center";
       gallery.style.backgroundSize = "cover";
-
     }
 
     // 로그인 창 나오게 하는 함수
     function loginPopUp() {
       const loginPopup = document.querySelector(".login-popup");
-      const overlay = document.querySelector(".overlay");
-      loginPopup.classList.add("active"); // 클래스명만, 변수명 통일
-      overlay.classList.add("active")
+      const overlay = document.querySelector(".overlay-login");
+      loginPopup.classList.add("active");
+      overlay.classList.add("active");
     }
 
+    // 로그인 창 들어가게 하는 함수
     function closeLogin() {
       const loginPopup = document.querySelector(".login-popup");
-      const overlay = document.querySelector(".overlay");
-      loginPopup.classList.remove("active"); // 클래스명만, 변수명 통일
-      overlay.classList.remove("active")
-    };
+      const overlay = document.querySelector(".overlay-login");
+      loginPopup.classList.remove("active");
+      overlay.classList.remove("active");
+    }
+
+    // 카트 창 나오게 하는 함수
+    function cartPopUp() {
+      const cartPopup = document.querySelector(".cart-popup");
+      const overlay = document.querySelector(".overlay-login");
+      cartPopup.classList.add("active");
+      overlay.classList.add("active");
+      calculateTotal(); // 카트 열리면 자동 계산
+    }
+
+    // 카트 창 들어가게 하는 함수
+    function closeCart() {
+      const cartPopup = document.querySelector(".cart-popup");
+      const overlay = document.querySelector(".overlay-login");
+      cartPopup.classList.remove("active");
+      overlay.classList.remove("active");
+    }
 
     /*총금액 계산하기*/
     const unitPrice = 40000;
@@ -898,16 +943,95 @@
       totalElement.textContent = "₩" + total.toLocaleString();
     }
 
-    // 카트 열릴 때도 계산 자동 실행
-    function loginPopUp() {
-      const loginPopup = document.querySelector(".login-popup");
-      const overlay = document.querySelector(".overlay");
-      loginPopup.classList.add("active");
-      overlay.classList.add("active");
+    function shoppingPopup() {
+      const shoppingSlide = document.querySelector(".shopping-slide");
+      const overlay = document.querySelector(".overlay-shopping");
 
-      calculateTotal(); // 카트 열리면 자동 계산
+      shoppingSlide.classList.add("active");
+      overlay.classList.add("active");
+      document.body.classList.add("no-scroll");
     }
 
+    // 쇼핑 창 들어가게 하는 함수
+    function closeShopping() {
+      const shoppingSlide = document.querySelector(".shopping-slide");
+      const overlay = document.querySelector(".overlay-shopping");
+      const detailSlide = document.querySelector(".detail-slide");
+
+      shoppingSlide.classList.remove("active");
+      overlay.classList.remove("active");
+      detailSlide.classList.remove("active");
+      document.body.classList.remove("no-scroll");
+    }
+
+    // 쇼핑 세부 카테고리 
+    const categoryData = {
+      coffee: {
+        title: '커피',
+        items: [
+          { name: '모든 커피', link: '/CoffeeAll.html' },
+          { name: '블렌드', link: '/CoffeeBlend.html' },
+          { name: '싱글 오리진', link: '/CoffeeSingleorigin.html' },
+          { name: '인스턴트', link: '/CoffeeInstant.html' },
+          { name: '콜드브루', link: '/CoffeeColdblew.html' },
+          { name: '휴먼 메이드', link: '/CoffeeHumanmade.html' },
+          { name: '세트', link: '/CoffeeSet.html' }
+        ]
+      },
+      tumbler: {
+        title: '컵과 텀블러',
+        items: [
+          { name: '모든 컵과 텀블러', link: '/CupAll.html' },
+          { name: '텀블러', link: '/CupTumblr.html' },
+          { name: '컵과 머그', link: '/CupMug.html' },
+          { name: '유리잔', link: '/CupGlass.html' }
+        ]
+      },
+      brewing: {
+        title: '브루잉 도구',
+        items: [
+          { name: '모든 브루잉 도구', link: '/BrewingAll.html' },
+          { name: '브루잉 도구', link: '/BrewingItem.html' },
+          { name: '액세서리', link: '/BrewingAcc.html' },
+          { name: '필터', link: '/BrewingFilter.html' },
+          { name: '그라인더', link: '/BrewingGrinder.html' }
+        ]
+      }
+    };
+
+    // 세부 카테고리 열기
+    function openDetailCategory(category) {
+      const detailSlide = document.querySelector(".detail-slide");
+      const detailTitle = document.getElementById("detail-title");
+      const detailList = document.getElementById("detail-list");
+
+      // 카테고리 데이터 가져오기
+      const data = categoryData[category];
+
+      // 제목 설정
+      detailTitle.textContent = data.title;
+
+      // 리스트 항목 생성
+      detailList.innerHTML = '';
+      data.items.forEach(item => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.textContent = item.name;
+        a.href = item.link; // 실제 링크 설정
+
+        li.appendChild(a);
+        detailList.appendChild(li);
+      });
+
+      // 세부 슬라이드 열기
+      detailSlide.classList.add("active");
+    }
+
+    // 세부 카테고리 닫기 (뒤로가기)
+    function closeDetailSlide() {
+      const detailSlide = document.querySelector(".detail-slide");
+      detailSlide.classList.remove("active");
+    }
   </script>
 </body>
 
