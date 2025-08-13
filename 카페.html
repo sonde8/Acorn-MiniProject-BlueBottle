@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    @import url('//fonts.googleapis.com/earlyaccess/notosanskr.css');
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      margin: 0;
+    }
+
+    .text-slide-container {
+      overflow: hidden;
+      position: relative;
+      /* 이것도 중요 */
+      width: 100%;
+      /* 명확한 너비 지정 */
+      background-color: white;
+      z-index: 1000;
+    }
+
+    .text-slide {
+      text-align: center;
+      font-size: 12px;
+      height: 30px;
+      line-height: 30px;
+      max-width: 100%;
+    }
+
+
+    header {
+      height: 80px;
+      padding: 0 60px;
+      /* grid를 사용해야함 */
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      background-color: #FDFBF7;
+      align-items: center;
+      z-index: 900;
+      position: relative;
+    }
+
+    /* 상단 5개 메뉴  */
+    .list-menu {
+      display: flex;
+      list-style: none;
+      gap: 40px;
+      font-size: 14px;
+      align-items: center;
+      padding: 0;
+    }
+
+    .list-menu li a {
+      text-decoration: none;
+      color: black;
+    }
+
+    /* 상단 3개 아이콘 */
+    .header-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      justify-self: end;
+    }
+
+    .header-icon span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+    }
+
+    .header-icon img {
+      width: 35px;
+      height: 35px;
+    }
+
+    .logo {
+      height: 57px;
+      width: 23px;
+    }
+
+    header css .wrap {
+      padding-top: 124px;
+      background-color: #fcfbf7;
+    }
+
+    .wrap {
+      background-color: #fcfbf7;
+    }
+
+    .first {
+      text-align: left;
+      font-size: 30px;
+      margin-bottom: 54px;
+
+      line-height: 140%;
+      padding: 0 80px;
+      padding-top: 80px;
+      background-color: #fcfbf7;
+    }
+
+    .first p {
+      margin: auto;
+      background-color: #fcfbf7;
+    }
+
+    .second_1 {
+      display: flex;
+      padding: 0 60px;
+    }
+
+    .sqr {
+      width: 33.3%;
+      height: 580px;
+      font-size: 20px;
+      padding: 0 20px;
+      position: relative;
+    }
+
+    .sqr img {
+      width: 100%;
+      height: 400px;
+      padding-bottom: 30px;
+    }
+
+    .sqr-hidden {
+      /*히든영역*/
+      position: absolute;
+      width: 93.5%;
+      height: 69%;
+      /* margin-left: 21px; */
+      text-align: center;
+      align-content: center;
+      top: 0px;
+      left: 20px;
+      background-color: rgba(199, 193, 193, 0.6);
+      opacity: 0;
+      transition: 1.5s;
+      color: white;
+    }
+
+    .sqr:hover .sqr-hidden {
+      opacity: 2;
+    }
+
+    footer {
+      height: 450px;
+      padding: 80px 0 40px;
+      background-color: #333333;
+      color: white;
+    }
+
+    .footer-body {
+      display: flex;
+    }
+
+    .footer-items {
+      display: flex;
+      padding: 0 112px;
+    }
+
+    .footer-item {
+      width: 340px;
+      height: 240px;
+    }
+
+    .footer-item h2 {
+      font-size: 14px;
+    }
+
+    .footer-item ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-item ul li {
+      font-size: 12px;
+      font-weight: 500;
+      margin: 0 15px 16px 0;
+    }
+
+    .footer-newletter h2 {
+      font-size: 14px;
+    }
+
+    .footer-newletter h2 p {
+      font-size: 12px;
+    }
+
+    .footer-newletter div {
+      margin-top: 5px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .footer-newletter input {
+      width: 100%;
+      height: 27px;
+      background-color: #333333;
+      outline: none;
+      border: none;
+      border-bottom: 1px solid white;
+      color: white;
+      margin-top: 30px;
+    }
+
+    .footer-newletter input::placeholder {
+      color: white;
+    }
+
+    .sns {
+      list-style: none;
+      display: flex;
+      padding: 0;
+    }
+
+    .sns img {
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      padding: 12px 12px 12px 0;
+    }
+
+    .footer-info {
+      padding: 0 112px;
+      margin-top: 40px;
+      font-size: 12px;
+    }
+
+    .footer-info-item {
+      margin-bottom: 10px;
+    }
+
+    .footer-copyright {
+      margin: 24px 0 0;
+      padding: 0 112px;
+      border-top: 0.5px solid white;
+      font-size: 12px;
+    }
+
+    .copyright-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .copyright-wrap ul {
+      padding: 0;
+    }
+
+    .footer-copyright ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+  </style>
+</head>
+
+<body onload="init()">
+  <script src="./index.js"></script>
+
+  <div class="text-slide-container">
+    <div class="text-slide"></div>
+  </div>
+
+  <!-- 헤더 -->
+  <header>
+    <!-- 메뉴 -->
+    <div>
+      <ul class="list-menu">
+        <li onclick="shoppingPopup()">쇼핑</li>
+        <li>
+          <a href="./베스트셀러.html">베스트셀러</a>
+        </li>
+        <li>
+          <a href="./놀라.html">NOLA</a>
+        </li>
+        <li>
+          <a href="./카페.html">카페</a>
+        </li>
+        <li>
+          <a href="./블로그.html">블로그</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 로고 -->
+    <div>
+      <a href="/index.html">
+        <img src="./img/logo.png" alt="" class="logo">
+      </a>
+    </div>
+
+
+    <!-- 검색,회원,장바구니 -->
+    <div class="header-icon">
+      <span>
+        <img src="./img/search1.png" alt="">
+      </span>
+      <span>
+        <img src="./img/user1.png" alt="" onclick="loginPopUp()">
+      </span>
+      <span>
+        <img src="./img/basket1.png" alt="">
+      </span>
+    </div>
+  </header>
+
+  <!--header 제외한 전체 페이지-->
+  <div class="wrap">
+
+    <!--블루보틀 카페 글씨 부분-->
+    <div class="first">
+      <p> 블루보틀 카페 </p>
+    </div>
+
+    <!--메인 첫째 줄-->
+    <div class="second_1">
+
+      <!--첫번째-->
+      <div class="sqr">
+
+        <img
+          src="https://kr.bluebottlecoffee.com/cdn/shop/articles/9327d6a8c1be00140110f5ea38dc5d0f.jpg?crop=center&height=2048&v=1753947473&width=2048"
+          alt="서울역">
+
+        <div class="sqr-hidden">
+          <h3>도심 한 가운데 블루보틀 <br> 서울역 놀라 팝업</h3>
+          <h4> 어디론가 떠나는 길이든!!</h4>
+          <h4> 잠시 머무는 길이든!!</h4>
+          <h3> 놀라와 함께라면 그 순간은 <br> 더 특별한 여행이 됩니다 </h3>
+        </div>
+
+        <br> <strong> 블루보틀 서울역 놀라 팝업 카페 </strong>
+        <p style="font-size: 16px;">서울특별시 용산구 청파로378 지상 2층 112호</p>
+        <p style="font-size: 16px;">매일 06:00 - 21:00</p>
+      </div>
+
+      <!--두번째-->
+      <div class="sqr">
+        <img
+          src="https://kr.bluebottlecoffee.com/cdn/shop/articles/BG_3123fd58-60c1-40f9-8bc3-19eed5214045.jpg?crop=center&height=2048&v=1754027354&width=2048"
+          alt="기장">
+
+        <div class="sqr-hidden">
+          <h3> 일상의 공간이자 여행지 <br> 기장 카페 </h3>
+          <h4> 커피 한 잔의 여유로움을 즐기고</h4>
+          <h4> 따스한 햇살을 온기가 가득한</h4>
+          <h3> 실내외 경계에 자리한 기장 카페에 <br> 여러분을 초대합니다 </h3>
+        </div>
+
+        <br> <strong> 블루보틀 부산 기장 카페 </strong>
+        <p style="font-size: 16px;">부산 기장군 장안읍 정관로 1133 프리미엄 아울렛 578호</p>
+        <p style="font-size: 16px;">매일 10:30 - 21:00</p>
+      </div>
+
+      <!--세번째-->
+      <div class="sqr">
+        <img
+          src="https://kr.bluebottlecoffee.com/cdn/shop/articles/web_cafe_BM_Thumb_1600x1600_111524_29967325-e3c9-4c81-b0c2-6d7f77238bc6.jpg?crop=center&height=2048&v=1743466856&width=2048"
+          alt="민락">
+
+        <div class="sqr-hidden">
+          <h3> 산과 바다, 강이 만나는 교차점 <br> 블루보틀 부산 민락 카페 </h3>
+          <h4> 부산 도심을 파노라마 뷰로 담을 수 있는 자리</h4>
+          <h4> 부산 민락 카페에서만 만나볼 수 있는 디저트</h4>
+          <h3> 색다른 감미로움을 <br> 커피와 함께 즐겨 보세요 </h3>
+        </div>
+
+        <br> <strong> 블루보틀 부산 민락 카페 </strong>
+        <p style="font-size: 16px;">부산광역시 수영구 민락수변로 243 1, 4, 5층 (민락동)</p>
+        <p style="font-size: 16px;">[4F] 매일 08:30 - 22:00 │ [1F] 매일 08:30 - 21:00</p>
+      </div>
+    </div>
+
+    <!--메인 두번째 줄-->
+    <div class="second_1">
+
+      <!--첫번째-->
+      <div class="sqr">
+        <img
+          src="https://kr.bluebottlecoffee.com/cdn/shop/articles/web_cafe_SMS_Thumb_1600x1600_101824_768edc48-1381-4a83-a775-e68687e8a070.jpg?crop=center&height=2048&v=1743466761&width=2048"
+          alt="삼성">
+
+        <div class="sqr-hidden">
+          <h3> 바쁘게 움직이는 도심 속 <br> 'on the go' 형태의 카페 </h3>
+          <h4> 따뜻한 환기로 채워진 공간</h4>
+          <h4> 잠시 발걸음이 멈추는 공간</h4>
+          <h3> 맛있는 커피 한 잔과 함께 <br> 의도된 공백을 즐겨 보세요 </h3>
+        </div>
+
+        <br> <strong> 블루보틀 삼성 카페 </strong>
+        <p style="font-size: 16px;">서울시 강남구 테헤란로 517 1층</p>
+        <p style="font-size: 16px;">월-목: 08:00 - 20:00 │ 금-일: 08:00 - 20:30</p>
+      </div>
+
+      <!--두번째-->
+      <div class="sqr">
+        <img
+          src="https://kr.bluebottlecoffee.com/cdn/shop/articles/web_BBC_HM_Thumb_1600x1600_090424_76bf3402-a71e-45b1-a109-af0679f31113.jpg?crop=center&height=2048&v=1738297826&width=2048"
+          alt="휴먼">
+
+        <div class="sqr-hidden">
+          <h3> 생기 넘치는 아이디어 제공과 <br> 문화가 되는 것을 목표로 하는 곳 </h3>
+          <h4> 과거와 현대의 맛을 담은 익스클루시브 메뉴</h4>
+          <h4> 맛있는 디저트 메뉴까지</h4>
+          <h3> 발걸음 잠시 멈추고 <br>경험하러오세요 </h3>
+        </div>
+
+        <br> <strong> 휴먼 메이드 서울 카페 바이 블루보틀 커피 </strong>
+        <p style="font-size: 16px;">서울시 성동구 성수동2가 333-94</p>
+        <p style="font-size: 16px;">매일 11:00 - 19:00</p>
+      </div>
+
+      <!--세번째-->
+      <div class="sqr">
+        <img
+          src="https://kr.bluebottlecoffee.com/cdn/shop/articles/BBCK_PG_main_1600x1600_1efaa507-0ac0-4e86-b7a8-2b80ea4bc217.jpg?crop=center&height=2048&v=1743466725&width=2048"
+          alt="판교">
+
+        <div class="sqr-hidden">
+          <h3> 산들바람이 일렁이는 벤치 <br> 저녁 밥상을 연상하는 원목테이블까지 </h3>
+          <h4> 목적 없는 사색을 즐기기 좋은 공간</h4>
+          <h4> 일상에 환기가 필요할 때 생각나는 공간</h4>
+          <h3> 맛있는 커피 한 잔으로 <br> 아늑함을 즐겨 보세요 </h3>
+        </div>
+
+        <br> <strong> 블루보틀 판교 카페 </strong>
+        <p style="font-size: 16px;">경기 성남시 분당구 동판교로177번길 25</p>
+        <p style="font-size: 16px;">매일 08:00 - 21:30</p>
+      </div>
+    </div>
+
+    <!--메인 세번째 줄-->
+    <div class="second_1">
+
+      <!--첫번째-->
+      <div class="sqr">
+        <img
+          src="https://kr.bluebottlecoffee.com/cdn/shop/articles/Thumbnail.jpg?crop=center&height=2048&v=1747284404&width=2048"
+          alt="연남">
+
+        <div class="sqr-hidden">
+          <h3> 연남동 옛 골목길의 정취에서 <br> 영감을 받아 재해석한 이 곳 </h3>
+          <h4> 주민들이 담소를 나누던 평상</h4>
+          <h4> 파이프라인을 재해석한 아이코닉한 공간</h4>
+          <h3> 맛있는 커피 한 잔 마시며 <br> 노스탤지어를 느껴보세요 </h3>
+        </div>
+
+        <br> <strong> 블루보틀 연남 카페 </strong>
+        <p style="font-size: 16px;">서울 마포구 성미산로32길 52 B1F - 1F</p>
+        <p style="font-size: 16px;">매일: 09:00 - 21:00</p>
+      </div>
+
+      <!--두번째-->
+      <div class="sqr">
+        <img
+          src="https://kr.bluebottlecoffee.com/cdn/shop/articles/BBCK_JS_main_1600x1600_9ba426cc-c7b7-4c89-8e99-7410e31b2f21.jpg?crop=center&height=2048&v=1745540636&width=2048"
+          alt="잠실">
+
+        <div class="sqr-hidden">
+          <h3> 서예 붓을 모티브로 건축된 건물 디자인 <br> 조화를 이루기 위해 곳곳한 곡선 디자인</h3>
+          <h4> 사계절의 온도를 느낄 수 있는 공간</h4>
+          <h4> 여유로움을 즐길 수 있는 공간</h4>
+          <h3> 맛있는 커피 한 잔 마시며 <br> 경험하러 오세요 </h3>
+        </div>
+
+        <br> <strong> 블루보틀 잠실 카페 </strong>
+        <p style="font-size: 16px;">서울시 송파구 올림픽대로 300 롯데월드몰 1층</p>
+        <p style="font-size: 16px;">매일 10:30 - 22:00</p>
+      </div>
+
+      <!--세번째-->
+      <div class="sqr">
+        <img
+          src="https://kr.bluebottlecoffee.com/cdn/shop/articles/BBCK_HD_main_1600x1600_d355252b-bdd2-4501-bb97-1e8d4e99bb0f.jpg?crop=center&height=2048&v=1721707946&width=2048"
+          alt="홍대">
+
+        <div class="sqr-hidden">
+          <h3> 홍대 커뮤니티와 여행객들에게 <br> 쉼의 공간을 선물하는 카페 </h3>
+          <h4> 블루보틀의 브랜드 철학과</h4>
+          <h4> 직접 로스팅한 원두로 내린 다양한 커피</h4>
+          <h3> 페어링하기 좋은 디저트 메뉴까지 <br> 만나러 오세요 </h3>
+        </div>
+
+        <br> <strong> 블루보틀 홍대 카페 </strong>
+        <p style="font-size: 16px;">서울시 마포구 양화로 130 라이즈 호텔 1층 로비</p>
+        <p style="font-size: 16px;">매일 07:30 - 21:00</p>
+      </div>
+    </div>
+
+    <!--메인 네번째 줄-->
+    <div class="second_1">
+
+      <!--첫번째-->
+      <div class="sqr">
+        <img
+          src="https://kr.bluebottlecoffee.com/cdn/shop/articles/BBCK_MYD_main_1600x1600_495cbe7d-893b-4c61-90ad-c71c44de147b.jpg?crop=center&height=2048&v=1743466535&width=2048"
+          alt="명동">
+
+        <div class="sqr-hidden">
+          <h3> 방안에 앉아 내 집의 경치를 <br> 감상할 수 있는 '자경'을 모티브한 곳 </h3>
+          <h4> 집을 콘셉트로 디자인한</h4>
+          <h4> '온더고(on the go)' 카페</h4>
+          <h3> 바쁜 도심 속 <br> 잠시의 휴식을 취해 보세요 </h3>
+        </div>
+
+        <br> <strong> 블루보틀 명동 카페 </strong>
+        <p style="font-size: 16px;">서울 중구 명동길 14 1층</p>
+        <p style="font-size: 16px;">평일: 07:30 - 22:00 │ 주말: 08:00 - 22:00</p>
+      </div>
+
+      <!--두번째-->
+      <div class="sqr">
+        <img
+          src="https://kr.bluebottlecoffee.com/cdn/shop/articles/BBCK_JJ_main_1600x1600_9a05b1f8-843b-4944-813b-7bf41f5dd7eb.jpg?crop=center&height=2048&v=1743466613&width=2048"
+          alt="제주">
+
+        <div class="sqr-hidden">
+          <h3> '누구나 환영한다' 의미를 가진 <br> 삼나무의 아름다움을 느낄 수 있는 곳 </h3>
+          <h4> 제주 해녀가 채취한 우뭇가사리를 </h4>
+          <h4> 오래 끓여 만든 수제 '커피푸딩'</h4>
+          <h3> 빠져들 수 있는 여기로 <br> 놀러오세요 </h3>
+        </div>
+
+        <br> <strong> 블루보틀 제주 카페 </strong>
+        <p style="font-size: 16px;">제주특별자치도 제주시 구좌읍 번영로 2133-30</p>
+        <p style="font-size: 16px;">매일 08:00 - 19:00</p>
+      </div>
+
+      <!--세번째-->
+      <div class="sqr">
+        <img
+          src="https://kr.bluebottlecoffee.com/cdn/shop/articles/BBCK_YUD_main_1600x1600_fa5f462f-d8dc-4811-a080-e2ec423f3ebb.jpg?crop=center&height=2048&v=1743466502&width=2048"
+          alt="여의도">
+
+        <div class="sqr-hidden">
+          <h3> 유리 천장의 햇살의 <br> 자연의 온기를 느낄 수 있는 곳 </h3>
+          <h4> 부드러운 곡선의 벽체와 </h4>
+          <h4> 벽면을 따라 이어지는 은은한 라이팅</h4>
+          <h3> 아늑함이 가득한 곳에서 <br> 잠시의 휴식을 취해보세요 </h3>
+        </div>
+
+        <br> <strong> 블루보틀 여의도 카페 </strong>
+        <p style="font-size: 16px;">서울 영등포구 여의대로 108 더현대서울점 5층</p>
+        <p style="font-size: 16px;">평일: 10:30 - 21:00 │ 주말: 10:30 - 21:30</p>
+      </div>
+    </div>
+
+    <!--메인 다섯번째 줄-->
+    <div class="second_1">
+
+      <!--첫번째-->
+      <div class="sqr">
+        <img
+          src="https://kr.bluebottlecoffee.com/cdn/shop/articles/BBCK_GHM_main_1600x1600_2113fa58-68a7-42e2-a4b8-c5088a2223e0.jpg?crop=center&height=2048&v=1743466459&width=2048"
+          alt="광화문">
+
+        <div class="sqr-hidden">
+          <h3> 높은 빌딩 속 안락함을 주는 <br> 청계천이 시작되는 곳 </h3>
+          <h4> 도심 한 가운데 우아하게 흐르는 </h4>
+          <h4> 청계천을 바라보며</h4>
+          <h3> 맛있는 커피를 <br> 즐기러 오세요 </h3>
+        </div>
+
+        <br> <strong> 블루보틀 광화문 카페 </strong>
+        <p style="font-size: 16px;">서울 종로구 청계천로 11</p>
+        <p style="font-size: 16px;">평일 07:30 - 20:00 │ 주말 08:00 - 20:30</p>
+      </div>
+
+      <!--두번째-->
+      <div class="sqr">
+        <img
+          src="https://kr.bluebottlecoffee.com/cdn/shop/articles/BBCK_HN_main_1600x1600_5478ec83-5bb1-4823-928e-0f05b1f99068.jpg?crop=center&height=2048&v=1721695739&width=2048"
+          alt="한남">
+
+        <div class="sqr-hidden">
+          <h3> 통유리창 너머 아담한 정원이 <br> 펼쳐지는 한남 카페 </h3>
+          <h4> 조선 후기 사방탁자에서 영감을 받은 디테일 </h4>
+          <h4> 강의 투명함을 연상시키는 소재</h4>
+          <h3> 안정적인 쉼과 함께 <br> 에너지를 충전해보세요 </h3>
+        </div>
+
+        <br> <strong> 블루보틀 한남 카페 </strong>
+        <p style="font-size: 16px;">서울 용산구 한남대로 91</p>
+        <p style="font-size: 16px;">평일: 09:00 - 20:30 │ 주말: 08:00 - 20:30</p>
+      </div>
+
+      <!--세번째-->
+      <div class="sqr">
+        <img
+          src="https://kr.bluebottlecoffee.com/cdn/shop/articles/Cafe_AGJ_main_1600x1600_a0e16010-100c-425b-9af2-867dad31a964.jpg?crop=center&height=2048&v=1743466424&width=2048"
+          alt="압구정">
+
+        <div class="sqr-hidden">
+          <h3> 미적 요소를 더한 작품과 <br> 함께해 아름다움이 공존하는 곳 </h3>
+          <h4> 차분하면서도 따뜻한 </h4>
+          <h4> 균형감이 돋보이는 카페</h4>
+          <h3> 발걸음이 멈춰지는 이 곳 <br> 압구정 카페에 방문해보세요 </h3>
+        </div>
+
+        <br> <strong> 블루보틀 압구정 카페 </strong>
+        <p style="font-size: 16px;">서울 강남구 논현로 854</p>
+        <p style="font-size: 16px;">평일: 07:30 - 21:00 │ 주말: 08:00 - 21:00</p>
+      </div>
+    </div>
+
+    <!--메인 여섯번째 줄-->
+    <div class="second_1">
+
+      <!--첫번째-->
+      <div class="sqr">
+        <img
+          src="https://kr.bluebottlecoffee.com/cdn/shop/articles/BBCK_YS_main_1600x1600_c06984f5-1245-4eda-a6e4-82b5b360459b.jpg?crop=center&height=2048&v=1743466392&width=2048"
+          alt="역삼">
+
+        <div class="sqr-hidden">
+          <h3> 창 너머 보이는 대나무 <br> 카페 내부의 나무 기둥 </h3>
+          <h4> 작은 대나무 숲에 머무는 듯한 느낌 </h4>
+          <h4> 도심 속 오아시스와 같은 곳</h4>
+          <h3> 통유리창으로 스며드는 <br> 자연광을 즐겨 보세요 </h3>
+        </div>
+
+        <br> <strong> 블루보틀 역삼 카페 </strong>
+        <p style="font-size: 16px;">서울 강남구 테헤란로 129 강남N타워</p>
+        <p style="font-size: 16px;">평일: 07:30 - 20:00 │ 주말: 08:00 - 20:30</p>
+      </div>
+
+      <!--두번째-->
+      <div class="sqr">
+        <img
+          src="https://kr.bluebottlecoffee.com/cdn/shop/articles/BBCK_SC_main_1600x1600_1cdeed7f-ec91-4df9-a015-e57526c11081.jpg?crop=center&height=2048&v=1721694928&width=2048"
+          alt="삼청">
+
+        <div class="sqr-hidden">
+          <h3> 한옥 기와가 펼쳐지는 통유리창 <br> 경복궁과 인왕산 전경까지 </h3>
+          <h4> 뷰을 즐길 수 있는 공간 </h4>
+          <h4> 이끌리게 되는 삼청 카페</h4>
+          <h3> 고품질의 커피와 함께 <br> 아름다운 자연경관을 즐겨 보세요 </h3>
+        </div>
+
+        <br> <strong> 블루보틀 삼청 카페 </strong>
+        <p style="font-size: 16px;">서울 종로구 북촌로5길 76</p>
+        <p style="font-size: 16px;">평일: 09:00 - 20:00 │ 주말: 09:00 - 20:30</p>
+      </div>
+
+      <!--세번째-->
+      <div class="sqr">
+        <img
+          src="https://kr.bluebottlecoffee.com/cdn/shop/articles/BBCK_SS_main_1600x1600_1e4b79e5-dfab-43d0-a335-49ac4f234cfe.jpg?crop=center&height=2048&v=1743466357&width=2048"
+          alt="성수">
+
+        <div class="sqr-hidden">
+          <h3> 성수 커뮤니티의 특색을 담은 <br> 붉은 벽돌 건물을 통해 탄생 </h3>
+          <h4> 차분하게 여유있는 공간 </h4>
+          <h4> 안락감을 안기는 공간</h4>
+          <h3> 맛있는 커피 한 잔의 <br> 여유로움을 즐겨 보세요 </h3>
+        </div>
+
+        <br> <strong> 블루보틀 성수 카페 </strong>
+        <p style="font-size: 16px;">서울특별시 성동구 아차산로 7</p>
+        <p style="font-size: 16px;">매일 07:30 - 20:30</p>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-wrap">
+        <div class="footer-body">
+          <div class="footer-title"></div>
+          <div class="footer-items">
+            <div class="footer-item">
+              <h2>블루보틀 커피</h2>
+              <ul>
+                <li>카페 찾기</li>
+                <li>커리어</li>
+              </ul>
+            </div>
+            <div class="footer-item">
+              <h2>알아보기</h2>
+              <ul>
+                <li>브랜드 소개</li>
+                <li>블루보틀 커피</li>
+                <li>지속가능성</li>
+                <li>브루잉 가이드</li>
+                <li>블로그</li>
+              </ul>
+            </div>
+            <div class="footer-item">
+              <h2>문의</h2>
+              <ul>
+                <li>고객 문의</li>
+                <li>단체/기업 구매 문의</li>
+                <li>자주 묻는 질문</li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <div class="footer-newletter">
+              <h2>구독하고 최신 정보를 받아보세요</h2>
+              <h2>
+                <p>이메일 뉴스레터에 가입하여 독점 혜택, 블루보틀 뉴스, 이벤트, 그리고 기분 좋은 신제품 소식을 누구보다 먼저 알아보세요.</p>
+              </h2>
+              <div>
+                <input type="text" placeholder="이메일 주소를 입력해주세요.">
+              </div>
+              <div>
+                개인정보 처리 방침 및 이용 약관
+              </div>
+              <ul class="sns">
+                <li>
+                  <img src="./img/facebook.png" alt="">
+                </li>
+                <li>
+                  <img src="./img/x.png" alt="">
+                </li>
+                <li>
+                  <img src="./img/instagram.png" alt="">
+                </li>
+                <li>
+                  <img src="./img/youtube.png" alt="">
+                </li>
+                <li>
+                  <img src="./img/kakao.png" alt="">
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-info">
+          <div>
+            <div>
+              <div class="footer-info-item">
+                <span>상호: 블루보틀커피코리아 유한회사</span>
+                I
+                <span>대표자: KARL WILLIAM STROVINK</span>
+                I
+                <span>개인정보관리책임자: 임홍주</span>
+              </div>
+              <div class="footer-info-item">
+                <span>사업자등록번화: 155-81-01195</span>
+                I
+                <span>사업정보확인</span>
+                I
+                <span>통신판매업신고: 2023-서울성동-0715</span>
+                I
+                <span>대표번호: 1533-6906</span>
+              </div>
+              <div class="footer-info-item">
+                <span>이메일: support_kr@blubottlecoffee.com</span>
+                I
+                <span>주소: 서울특별시 성동구 아차산로 7(성수동1가)</span>
+                I
+                <span>호스팅서비스 제공자: Shopify, Inc</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-copyright">
+        <div class="copyright-wrap">
+          <ul>
+            <li>개인정보 처리방침</li>
+            <li>판매이용약관</li>
+            <li>환불정책</li>
+          </ul>
+          <div>
+            © 2023 BLUE BOTTLE COFFEE INC., ALL RIGHTS RESERVED
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+
+</html>
